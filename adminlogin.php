@@ -28,7 +28,7 @@
 
             <form class="validate-form">
                 <div class="adminlogo">
-                    <img src="adminlogo.jpg" alt="LOGO">
+                    <img src="images/adminlogo.jpg" alt="LOGO">
                 </div>
 
 
