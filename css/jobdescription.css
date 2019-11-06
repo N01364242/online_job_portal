@@ -1,0 +1,89 @@
+hr{
+    border-color: #323e48;
+    border-style: solid;
+    border-width: 2px;
+}
+
+#job_summary{
+    border-top: 3px solid #ccc;
+    border-bottom: 3px solid #ccc;
+    padding: 12px 0 20px 0;
+    margin: 0 0 20px 0;
+    list-style: none;
+}
+
+#job_summary li{
+    float: left;
+    width: 364px;
+    padding-left: 0px;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix:after, .clearfix:before {
+    content: "";
+    display: table;
+}
+
+#desc{
+    font-family: 'Work Sans', sans-serif !important;
+    padding: 0;
+    padding: 20px 0 0 0;
+    clear: both;
+    font-size: 14px;
+}
+
+#desc p{
+    line-height: 1.5
+}
+
+#desc h2 {
+    font-size: 30px;
+    margin: 30px 0 20px 0;
+    text-shadow: 0 0 1px rgba(0,0,0,.3)
+}
+
+#desc ul li {
+    margin: 20px 0 0 0;
+    list-style-type: disc;
+    list-style-position: inside;
+}
+#desc ul{
+    padding-left: 0px;
+}
+#desc li{
+    display: list-item;
+    text-align: -webkit-match-parent;
+    padding-left: 0px;
+}
+
+
+.center {
+    margin-top:50px;
+}
+
+.modal-header {
+    padding-bottom: 5px;
+}
+
+.modal-footer {
+    padding: 0;
+}
+
+.modal-footer .btn-group button {
+    height:40px;
+    border-top-left-radius : 0;
+    border-top-right-radius : 0;
+    border: none;
+    border-right: 1px solid #ddd;
+}
+
+.modal-footer .btn-group:last-child > button {
+    border-right: 0;
+}
