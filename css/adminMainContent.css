@@ -1,6 +1,7 @@
 #main-content {
-    height: 100%;
+    height: 100vh;
     margin-left: 210px;
+    position: relative;
 }
 .wrapper {
     display: inline-block;
@@ -14,6 +15,7 @@
 
 .mt {
     margin-top: 25px;
+
 }
 .content-panel {
     background: #ffffff;

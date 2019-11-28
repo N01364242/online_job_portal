@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-    <title>Dashio - Bootstrap Admin Template</title>
+    <title>JobStock - Dashboard</title>
 
     <!-- Favicons -->
     <link href="img/favicon.png" rel="icon">
@@ -17,11 +17,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Custom styles for this template -->
-    <link href="css/adminHeader.css" rel="stylesheet">
+    <link href="../css/adminHeader.css" rel="stylesheet">
 
 </head>
 <body>
 <?php
+session_start();
 include "adminHeader.php";
 include "sidebar.php";
 include "adminFooter.php";

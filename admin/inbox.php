@@ -19,8 +19,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- Custom styles for this template -->
-    <link href="css/adminHeader.css" rel="stylesheet">
-    <link href="css/adminMainContent.css" rel="stylesheet">
+    <link href="../css/adminHeader.css" rel="stylesheet">
+    <link href="../css/adminMainContent.css" rel="stylesheet">
     <link href="css/table.css" rel="stylesheet">
 
 </head>
@@ -65,8 +65,8 @@ include "sidebar.php";
                                     <td class="inbox-small-cells">
                                         <input type="checkbox" class="mail-checkbox">
 
-                                    <td class="view-message  dont-show"><a href="mail_view.php">ajith@nnc.com</a></td>
-                                    <td class="view-message "><a href="mail_view.php">Your new account is ready.</a></td>
+                                    <td class="view-message  dont-show"><a href="../mail_view.php">ajith@nnc.com</a></td>
+                                    <td class="view-message "><a href="../mail_view.php">Your new account is ready.</a></td>
                                     <td class="view-message inbox-small-cells"></td>
                                     <td class="view-message text-right">March 15</td>
                                     <td class="view-message  text-right">08:10 AM</td>
@@ -75,8 +75,8 @@ include "sidebar.php";
                                     <td class="inbox-small-cells">
                                         <input type="checkbox" class="mail-checkbox">
 
-                                    <td class="view-message dont-show"><a href="mail_view.php">mark@gg.com</a></td>
-                                    <td class="view-message"><a href="mail_view.php">Last project updates</a></td>
+                                    <td class="view-message dont-show"><a href="../mail_view.php">mark@gg.com</a></td>
+                                    <td class="view-message"><a href="../mail_view.php">Last project updates</a></td>
                                     <td class="view-message inbox-small-cells"></td>
                                     <td class="view-message text-right">March 15</td>
                                     <td class="view-message  text-right">08:10 AM</td>
@@ -85,8 +85,8 @@ include "sidebar.php";
                                     <td class="inbox-small-cells">
                                         <input type="checkbox" class="mail-checkbox">
 
-                                    <td class="view-message dont-show"><a href="mail_view.php">jacoz@kkk.com</a></td>
-                                    <td class="view-message"><a href="mail_view.php">Thanks for your registration</a></td>
+                                    <td class="view-message dont-show"><a href="../mail_view.php">jacoz@kkk.com</a></td>
+                                    <td class="view-message"><a href="../mail_view.php">Thanks for your registration</a></td>
                                     <td class="view-message inbox-small-cells"></td>
                                     <td class="view-message text-right">March 15</td>
                                     <td class="view-message  text-right">08:10 AM</td>
@@ -95,8 +95,8 @@ include "sidebar.php";
                                     <td class="inbox-small-cells">
                                         <input type="checkbox" class="mail-checkbox">
 
-                                    <td class="view-message dont-show"><a href="mail_view.php">henry@jjj.com</a></td>
-                                    <td class="view-message"><a href="mail_view.php">New Friendship Request</a></td>
+                                    <td class="view-message dont-show"><a href="../mail_view.php">henry@jjj.com</a></td>
+                                    <td class="view-message"><a href="../mail_view.php">New Friendship Request</a></td>
                                     <td class="view-message inbox-small-cells"></td>
                                     <td class="view-message text-right">March 13</td>
                                     <td class="view-message  text-right">09:10 AM</td>
@@ -105,7 +105,7 @@ include "sidebar.php";
                                     <td class="inbox-small-cells">
                                         <input type="checkbox" class="mail-checkbox">
 
-                                    <td class="view-message dont-show"><a href="mail_view.php">vrindz@jjj.com</a></td>
+                                    <td class="view-message dont-show"><a href="../mail_view.php">vrindz@jjj.com</a></td>
                                     <td class="view-message"><a href="mail_view.html">The server is down</a></td>
                                     <td class="view-message inbox-small-cells"></td>
                                     <td class="view-message text-right">March 09</td>
@@ -115,7 +115,7 @@ include "sidebar.php";
                                     <td class="inbox-small-cells">
                                         <input type="checkbox" class="mail-checkbox">
 
-                                    <td class="view-message dont-show"><a href="mail_view.php">renuz@jjj.com</a></td>
+                                    <td class="view-message dont-show"><a href="../mail_view.php">renuz@jjj.com</a></td>
                                     <td class="view-message"><a href="mail_view.html">New message from Patrick S.</a></td>
                                     <td class="view-message inbox-small-cells"></td>
                                     <td class="view-message text-right">March 09</td>
@@ -125,8 +125,8 @@ include "sidebar.php";
                                     <td class="inbox-small-cells">
                                         <input type="checkbox" class="mail-checkbox">
 
-                                    <td class="view-message dont-show"><a href="mail_view.php">Pay@jjj.com</a></td>
-                                    <td class="view-message"><a href="mail_view.php">New payment received</a></td>
+                                    <td class="view-message dont-show"><a href="../mail_view.php">Pay@jjj.com</a></td>
+                                    <td class="view-message"><a href="../mail_view.php">New payment received</a></td>
                                     <td class="view-message inbox-small-cells"></td>
                                     <td class="view-message text-right">March 09</td>
                                     <td class="view-message  text-right">10:10 AM</td>
@@ -136,8 +136,8 @@ include "sidebar.php";
                                         <input type="checkbox" class="mail-checkbox">
 
 
-                                    <td class="view-message view-message"><a href="mail_view.php">georgez@kkk.com</a></td>
-                                    <td class="view-message"><a href="mail_view.php">New payment received</a></td>
+                                    <td class="view-message view-message"><a href="../mail_view.php">georgez@kkk.com</a></td>
+                                    <td class="view-message"><a href="../mail_view.php">New payment received</a></td>
                                     <td class="view-message inbox-small-cells"></td>
                                     <td class="view-message text-right">March 09</td>
                                     <td class="view-message  text-right">10:10 AM</td>
@@ -145,8 +145,8 @@ include "sidebar.php";
                                 <tr class="">
                                     <td class="inbox-small-cells">
                                         <input type="checkbox" class="mail-checkbox">
-                                    <td class="view-message dont-show"><a href="mail_view.php">DavidG@jjj.com</a></td>
-                                    <td class="view-message view-message"><a href="mail_view.php">Soccer tickets</a></td>
+                                    <td class="view-message dont-show"><a href="../mail_view.php">DavidG@jjj.com</a></td>
+                                    <td class="view-message view-message"><a href="../mail_view.php">Soccer tickets</a></td>
                                     <td class="view-message inbox-small-cells"></td>
                                     <td class="view-message text-right">February 22</td>
                                     <td class="view-message  text-right">10:10 AM</td>
@@ -155,8 +155,8 @@ include "sidebar.php";
                                     <td class="inbox-small-cells">
                                         <input type="checkbox" class="mail-checkbox">
 
-                                    <td class="view-message view-message"><a href="mail_view.php">Surzz@jjj.com</a></td>
-                                    <td class="view-message view-message"><a href="mail_view.php">Soccer tickets</a></td>
+                                    <td class="view-message view-message"><a href="../mail_view.php">Surzz@jjj.com</a></td>
+                                    <td class="view-message view-message"><a href="../mail_view.php">Soccer tickets</a></td>
                                     <td class="view-message inbox-small-cells"></td>
                                     <td class="view-message text-right">February 19</td>
                                     <td class="view-message  text-right">11:10 AM</td>
@@ -164,8 +164,8 @@ include "sidebar.php";
                                 <tr class="">
                                     <td class="inbox-small-cells">
                                         <input type="checkbox" class="mail-checkbox">
-                                    <td class="view-message dont-show"><a href="mail_view.php">Martin@hhh.com</a></td>
-                                    <td class="view-message view-message"><a href="mail_view.php">Thanks for reply</a></td>
+                                    <td class="view-message dont-show"><a href="../mail_view.php">Martin@hhh.com</a></td>
+                                    <td class="view-message view-message"><a href="../mail_view.php">Thanks for reply</a></td>
                                     <td class="view-message inbox-small-cells"></td>
                                     <td class="view-message text-right">February 17</td>
                                     <td class="view-message  text-right">10:34 AM</td>
@@ -174,8 +174,8 @@ include "sidebar.php";
                                     <td class="inbox-small-cells">
                                         <input type="checkbox" class="mail-checkbox">
 
-                                    <td class="dont-show"><a href="mail_view.php">Face@hhh.com</a></td>
-                                    <td class="view-message"><a href="mail_view.php">Paul published on your wall</a></td>
+                                    <td class="dont-show"><a href="../mail_view.php">Face@hhh.com</a></td>
+                                    <td class="view-message"><a href="../mail_view.php">Paul published on your wall</a></td>
                                     <td class="view-message inbox-small-cells"></td>
                                     <td class="view-message text-right">February 19</td>
                                     <td class="view-message  text-right">10:34 AM</td>
@@ -184,8 +184,8 @@ include "sidebar.php";
                                     <td class="inbox-small-cells">
                                         <input type="checkbox" class="mail-checkbox">
 
-                                    <td class="view-message dont-show"><a href="mail_view.php">Steve@jko.com</a></td>
-                                    <td class="view-message"><a href="mail_view.php">Update developed</a></td>
+                                    <td class="view-message dont-show"><a href="../mail_view.php">Steve@jko.com</a></td>
+                                    <td class="view-message"><a href="../mail_view.php">Update developed</a></td>
                                     <td class="view-message inbox-small-cells"></td>
                                     <td class="view-message text-right">February 11</td>
                                     <td class="view-message  text-right">11:34 AM</td>

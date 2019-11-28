@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-    <title>Dashio - Bootstrap Admin Template</title>
+    <title>JobStock - UI Elements</title>
 
     <!-- Favicons -->
     <link href="img/favicon.png" rel="icon">
@@ -19,9 +19,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- Custom styles for this template -->
-    <link href="css/adminHeader.css" rel="stylesheet">
-    <link href="css/adminMainContent.css" rel="stylesheet">
-    <link href="css/table.css" rel="stylesheet">
+    <link href="../css/adminHeader.css" rel="stylesheet">
+    <link href="../css/adminMainContent.css" rel="stylesheet">
 
 </head>
 <body>
@@ -43,11 +42,11 @@ include "sidebar.php";
 
 
                 <!--Menu-->
-                <div class="dropdown-menu dropdown-primary">
-                    <a class="dropdown-item" href="#">Businesss Stream</a>
-                    <a class="dropdown-item" href="#">SkillSet</a>
-                    <a class="dropdown-item" href="#">Skill level</a>
-                    <a class="dropdown-item" href="#">FAQ</a>
+                <div class="dropdown-menu dropdown-primary" >
+                    <a class="dropdown-item" id="Streams" href="#" onclick="showDetails(this);">Businesss Stream</a>
+                    <a class="dropdown-item" id="SkillSet" href="#" onclick="showDetails(this);">SkillSet</a>
+                    <a class="dropdown-item"  id="SkillLevel"href="#" onclick="showDetails(this);">Skill level</a>
+                    <a class="dropdown-item"  id="FAQ" href="#" onclick="showDetails(this);">FAQ</a>
                 </div>
             </div>
             <!--/Dropdown primary-->
@@ -56,7 +55,7 @@ include "sidebar.php";
                 <div class="content-panel">
 
             <section id="unseen">
-                <table class="table table-bordered table-striped table-condensed">
+                <table class="table table-bordered table-striped table-condensed" >
                     <thead>
                     <tr>
                         <th>Business Stream ID</th>
@@ -64,8 +63,8 @@ include "sidebar.php";
 
                     <tr>
                     </thead>
-                    <tbody>
-                    <tr>
+                    <tbody id="uicontents">
+                   <!-- <tr>
                         <td>201</td>
                         <td>Service Business</td>
 
@@ -81,7 +80,7 @@ include "sidebar.php";
                         <td>Manufacturing Business</td>
 
 
-                    </tr>
+                    </tr>-->
                     </tbody>
                 </table>
             </section>
@@ -91,5 +90,36 @@ include "sidebar.php";
 <?php
 include "adminFooter.php";
 ?>
+<script>
+    function showDetails(button) {
+        var dropdownId = button.id;
+        alert(dropdownId);
+
+               $.ajax({
+            url: "loadUIElements.php",
+            method: "POST",
+             dataType: 'JSON',
+             data: {"ui_id": dropdownId},
+             success: function (response) {
+                 var trHTML = '';
+                 alert(response);
+                 var len = response.length;
+                 for (var i = 0; i < len; i++) {
+                     var id = response[i].id;
+                     var streamName = response[i].business_stream_name;
+
+
+                     var tr_str = "<tr>" +
+                         "<td align='center'>" + id + "</td>" +
+                         "<td align='center'>" + streamName + "</td>" +
+                         "</tr>";
+
+                     $("#uicontents tbody").append(tr_str);
+                     console.log(tr_str);
+                 }
+             }
+        });
+    }
+</script>
 </body>
 </html>
