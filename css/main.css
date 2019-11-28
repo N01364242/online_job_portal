@@ -1,5 +1,5 @@
 .bkimg{
-    background-image: url('../images/background.jpg');
+    background-image: url('../images/x.jpg');
     width: auto;
     height:600px;
     width: 100%;
@@ -38,33 +38,6 @@ li{
 #loc {
     margin-left: 80px;
     margin-top: -10px;
-}
-
-footer{
-    background-color: #1abc9c;
-    padding-bottom: 5px;
-    margin-top: 300px;
-}
-
-footer p{
-    font-size: 20px;
-    color: black;
-    margin-left: 750px;
-    font-style:italic;
-    font-weight: bold;
-}
-#ftr{
-    margin-top: 10px;
-    padding-top: -10px;
-}
-.end a{
-    color:white;
-    background-color:#086A87;
-    border-radius: 50%;
-    margin:40px;
-    padding:10px;
-    float: right;
-    margin-top: -50px;
 }
 
 #mdl{

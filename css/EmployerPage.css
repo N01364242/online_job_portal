@@ -1,0 +1,11 @@
+#welcome {
+    margin-top: 90px;
+    margin-left: 40px;
+    color: #00c6fb;
+}
+
+#bkimg{
+    background-image: url("../Employer/images/emps.png");
+    width: auto;
+    height: 664px;
+}
