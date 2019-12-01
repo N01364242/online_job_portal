@@ -16,10 +16,10 @@
 
     <script>
         $(function(){
-            $("#header").load("header.php");
+            $("#header").load("../header.php");
         });
         $(function(){
-            $("#footer").load("footer.php");
+            $("#footer").load("../footer.php");
         });
     </script>
 </head>

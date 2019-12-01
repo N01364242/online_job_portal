@@ -25,18 +25,20 @@
 
 </head>
 <body>
+<?php include "jobseekerLoginProcess.php"?>
 <div id="header"></div>
 <div class="container">
     <div class="row justify-content-center">
 
-        <form class="text-center border border-light p-5" action="#">
+        <form class="text-center border border-light p-5" action="jobseekerLoginProcess.php" method="post">
             <p class="h4 mb-4">Sign in</p>
 
             <div class="form-group">
-                <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                <span><font color='red'><?php echo $usernameError?></font></span>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
             </div>
             <div class="form-group">
                 <div>
@@ -53,7 +55,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-info my-4 btn-block">Submit</button>
+            <input type="submit" name="submit" value="Submit" class="btn btn-info my-4 btn-block">
             <div class="form-group">
                 Not a member?
                 <a href="registration.php">Register</a>

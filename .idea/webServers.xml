@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="19d43062-f77a-4497-87ca-21e3d4822ef1" name="server" url="http://localhost/project-user-interface-hypertextbreed/">
+        <fileTransfer port="0" mountedRoot="C:\xampp\htdocs\project-user-interface-hypertextbreed" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -25,7 +25,7 @@
                 <a href="contact.php" class="dropdown-item">Contact</a>
                 <a href="#" class="dropdown-item">FAQ</a>
             </div></li>
-        <li class="nav-item"><button type="button" class="btn btn-outline-primary" onclick="location.href='Login.php';">Login</button></li>
+        <li class="nav-item"><button type="button" class="btn btn-outline-primary" onclick="location.href='login.php';">Login</button></li>
         <li class="nav-item"><button type="button" class="btn btn-outline-primary" onclick="location.href='registration.php';">SignUp</button></li>
         </div>
     </ul>
