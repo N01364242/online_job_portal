@@ -43,7 +43,7 @@ include "sidebar.php";
 
                 <!--Menu-->
                 <div class="dropdown-menu dropdown-primary" >
-                    <a class="dropdown-item" id="Streams" href="#" onclick="showDetails(this);">Businesss Stream</a>
+                    <a class="dropdown-item" id="Business Stream" href="#" onclick="showDetails(this);">Businesss Stream</a>
                     <a class="dropdown-item" id="SkillSet" href="#" onclick="showDetails(this);">SkillSet</a>
                     <a class="dropdown-item"  id="SkillLevel"href="#" onclick="showDetails(this);">Skill level</a>
                     <a class="dropdown-item"  id="FAQ" href="#" onclick="showDetails(this);">FAQ</a>
@@ -55,34 +55,41 @@ include "sidebar.php";
                 <div class="content-panel">
 
             <section id="unseen">
+                <!--<form action='ProcessUIElements.php' method='post'>-->
                 <table class="table table-bordered table-striped table-condensed" >
-                    <thead>
-                    <tr>
-                        <th>Business Stream ID</th>
-                        <th>Business Stream Name</th>
-
-                    <tr>
+                    <thead id="uihead">
+                   <!--THis will display the heading of the UI elements -->
                     </thead>
                     <tbody id="uicontents">
-                   <!-- <tr>
-                        <td>201</td>
-                        <td>Service Business</td>
+                   <!-- THis will display the UI values-->
 
-                    </tr>
-                    <tr>
-                        <td>202</td>
-                        <td>Merchandising Business</td>
-
-
-                    </tr>
-                    <tr>
-                        <td>203</td>
-                        <td>Manufacturing Business</td>
-
-
-                    </tr>-->
                     </tbody>
                 </table>
+               <!-- </form>-->
+                <!--Modal on Clicking Details button-->
+                <div id="myModal" class="modal fade" role="dialog" tabindex="-1" role="dialog"
+                     aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="title"></h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                            </div>
+                            <div class="modal-body">
+                                <p><b>Id: </b> <input type="text" id="id" readonly></span></p>
+                                <p><b>Name: </b><input type="text" id="name"></input> </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateContent(this)">Save changes</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </section>
         </div>
     </section>
@@ -102,22 +109,87 @@ include "adminFooter.php";
              data: {"ui_id": dropdownId},
              success: function (response) {
                  var trHTML = '';
-                 alert(response);
                  var len = response.length;
+                 var head1 = dropdownId + " "+"Id";
+                 var head2 = dropdownId + " "+"Name";
+                 $("#uihead").empty();
+                 var tr_str = "<tr>" +
+                     "<th align='center'>" + head1 + "</th>" +
+                     "<th align='center'>" + head2 + "</th>" +
+                     "</tr>";
+
+                 $("#uihead").append(tr_str);
+                 $("#uicontents").empty();
                  for (var i = 0; i < len; i++) {
                      var id = response[i].id;
                      var streamName = response[i].business_stream_name;
 
 
-                     var tr_str = "<tr>" +
+                     tr_str = "<tr id='"+ dropdownId+id+"'>" +
                          "<td align='center'>" + id + "</td>" +
                          "<td align='center'>" + streamName + "</td>" +
+                         "<td align='center'><button class ='btn btn-primary btn-lg' data-toggle ='modal' data-target='#myModal'"+
+                         " id='"+dropdownId +"_"+ id + "_"+streamName+"' onclick='updateDetails(this);'>Update</button></td>"+
+                         "<td align='center' id='" + id + "'><button class='btn btn-danger btn-sm' onclick='remove(this);'>Delete</button></td>"+
                          "</tr>";
 
-                     $("#uicontents tbody").append(tr_str);
-                     console.log(tr_str);
+                     $("#uicontents").append(tr_str);
+
                  }
+             var tr_str = "<tr><td align='center'><input type='text' name='id' disabled/></td>"+
+                 "<td align='center'><input type='text' name='name'/></td>" +
+                 "<td><input type='submit' name='insert' value='Add'></td></tr>"
+                 $("#uicontents").append(tr_str);
              }
+        });
+    }
+    function remove(button) {
+
+        var id = button.parentElement.getAttribute("id");
+        var k = button.closest("tr");
+
+        if(confirm('Are you sure to remove this record ?'))
+        {
+            $.ajax({
+                url: "ProcessUIElements.php",
+                method: "POST",
+                data: {id: id},
+                error: function() {
+                    alert('Something is wrong');
+                },
+                success: function(data) {
+                    alert(data);
+                    k.remove();
+                    alert("Record removed successfully");
+                }
+            });
+        }
+    };
+    function updateDetails(button){
+        var details = button.id;
+        var res = details.split("_");
+        $("#title").text(res[0]);
+        $("#id").val(res[1]);
+        $("#name").val(res[2]);
+    }
+
+    function updateContent(button) {
+        var title= $('#title').text();
+        var id= $('#id').val();
+        var name = $('#name').val();
+        $.ajax({
+            url: "UpdateUIElement.php",
+            method: "POST",
+            data: {id: id, name: name},
+            error: function() {
+                alert('Something is wrong');
+            },
+            success: function(data) {
+
+                button.id =title;
+                alert("Record updated successfully");
+                showDetails(button);
+            }
         });
     }
 </script>

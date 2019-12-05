@@ -3,8 +3,8 @@ class Database
 {    //properties
     private static $user = 'root';
     private static $pass = '';
-    private static $db = 'jobportal';
-    private static $dsn = 'mysql:host=localhost;dbname=jobportal';
+    private static $db = 'portal';
+    private static $dsn = 'mysql:host=localhost;dbname=portal';
     private static $dbcon;
 
     private function __construct()
@@ -17,7 +17,7 @@ class Database
             try {
                 self::$dbcon = new PDO(self::$dsn, self::$user, self::$pass);
                 self::$dbcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                echo " Databse Connected";
+              //  echo " Databse Connected";
             } catch (PDOException $e) {
                 echo $e->getMessage();
                 exit();

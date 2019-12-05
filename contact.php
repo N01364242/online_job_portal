@@ -29,23 +29,23 @@
     <div class="row justify-content-center">
 
         <!-- Default form contact -->
-        <form class="text-center border border-light p-5" action="#!">
+        <form class="text-center border border-light p-5" method ="post" action="contactUs.php">
 
             <p class="h4 mb-4">Contact us</p>
 
             <!-- Name -->
-            <input type="text" id="name" class="form-control mb-4" placeholder="Name">
+            <input type="text" id="name" class="form-control mb-4" name="name" placeholder="Name">
 
             <!-- Email -->
-            <input type="email" id="email" class="form-control mb-4" placeholder="E-mail">
+            <input type="email" id="email" class="form-control mb-4" name="email" placeholder="E-mail">
 
             <div class="form-group">
-                <textarea class="form-control rounded-0" id="message" rows="3" placeholder="Message"></textarea>
+                <textarea class="form-control rounded-0" id="message" name="message" rows="3" placeholder="Message"></textarea>
             </div>
 
 
             <!-- Send button -->
-            <button class="btn btn-info btn-block" type="submit">Send</button>
+            <button class="btn btn-info btn-block" type="submit" name="submit">Send</button>
 
         </form>
         <!-- Default form contact -->
