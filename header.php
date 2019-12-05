@@ -22,7 +22,7 @@
             </div></li>
         <li class="nav-item dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact</a>
             <div class="dropdown-menu">
-                <a href="contact.php" class="dropdown-item">Contact</a>
+                <a href="#" onclick="location.href='contact.php';" class="dropdown-item">Contact</a>
                 <a href="#" class="dropdown-item">FAQ</a>
             </div></li>
         <li class="nav-item"><button type="button" class="btn btn-outline-primary" onclick="location.href='login.php';">Login</button></li>
