@@ -72,10 +72,6 @@ if(isset($_POST['registration'])){
         $pstm->setFetchMode(PDO::FETCH_OBJ);
         $print = $pstm->execute();*/
 
-
-
-
-
     }
     header("Location:home.php");
 }

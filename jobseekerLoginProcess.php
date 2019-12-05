@@ -23,7 +23,7 @@ if ( isset($_POST['submit'] ) ) {
     }
 
     if (isset($_POST['username']) && isset($_POST['password'])) {
-        //session_start();
+        session_start();
 
         $sql = "SELECT * FROM login WHERE username = :username and password = :password";
         $pdostm = $db->prepare($sql);
@@ -34,6 +34,7 @@ if ( isset($_POST['submit'] ) ) {
 
         if ($user) {
             $_SESSION['user'] = $_POST['username'];
+            $_SESSION['user_id'] = $user->useraccid;
 
             header("Location: home.php");
 

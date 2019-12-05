@@ -1,77 +1,77 @@
 <?php
+
+require_once 'Database.php';
+$dbcon = Database::getDb();
+
+$sql = "select * from job_post join job_type on job_post.job_type_id = job_type.id 
+                                  join location on job_post.joblocation_id = location.loc_id";
+
+$pdostm = $dbcon->prepare($sql);
+$pdostm->setFetchMode(PDO::FETCH_OBJ);
+$pdostm->execute();
+
 ?>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+
 <div id="center_column" class="clearfix equal_height">
-    <div id="listings_module">
-        <table class="table table-hover" style="width:60%; margin: auto;">
+    <div id="listings_module" class="table-responsive">
+        <table class="table table-hover" id="dtBasicExample" style="width:60%; margin: auto;">
             <thead>
             <tr>
                 <th class="listings_title">Job Title</th>
-                <th class="listings_pay">Pay/Type</th>
+                <th class="listings_type">Type</th>
+                <th class="listings_pay">Pay</th>
                 <th class="listings_area">City</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="clickable_button">
-                <td class="listings_title">
-                    <h5><a href="jobdescription.php">Infrastructure Engineer With SF Unicorn</a></h5>
-                </td>
-                <td class="listings_pay">
-                    <p class="compensation">$1750K-250K</p>
-                </td>
-                <td class="listings_area">
-                    <p class="city">Montreal, Quebec </p>
-                </td>
-                <td class="overview_arrow"><span></span></td>
-            </tr>
-            <tr class="clickable_button">
-                <td class="listings_title">
-                    <h5><a href="">CNN Data Engineer</a></h5>
-                </td>
-                <td class="listings_pay">
-                    <p class="compensation">$140K-180K</p>
-                </td>
-                <td class="listings_area">
-                    <p class="city">Brampton, Ontario </p>
-                </td>
-            </tr>
-            <tr class="clickable_button">
-                <td class="listings_title">
-                    <h5><a href="">Front End Developer</a></h5>
-                </td>
-                <td class="listings_pay">
-                    <p class="compensation">$180K-200K</p>
-                </td>
-                <td class="listings_area">
-                    <p class="city">Toronto, Ontario</p>
-                </td>
-            </tr>
-            <tr class="clickable_button">
-                <td class="listings_title">
-                    <h5><a href="">Data Analyst</a></h5>
-                </td>
-                <td class="listings_pay">
-                    <p class="compensation">$240K-280K</p>
-                </td>
-                <td class="listings_area">
-                    <p class="city">Toronto, Ontario </p>
-                </td>
-            </tr>
-            <tr class="clickable_button">
-                <td class="listings_title">
-                    <h5><a href="">Software Developer</a></h5>
-                </td>
-                <td class="listings_pay">
-                    <p class="compensation">$200K-280K</p>
-                </td>
-                <td class="listings_area">
-                    <p class="city">London, Ontario </p>
-                </td>
-            </tr>
+            <?php
+                foreach ($pdostm as $job){ ?>
+
+                    <tr class="clickable_button">
+                        <td class="listings_title">
+
+                            <h5><a href="jobdescription.php?id=<?php echo $job->job_id;?>"><input type="hidden" name="id" value="">
+                                    <?php echo $job->job_title?></a></h5>
+                        </td>
+                        <td class="listings_type">
+                            <p class="compensation"><?php echo $job->job_type?></p>
+                        </td>
+                        <td class="listings_pay">
+                            <p class="compensation"><?php echo $job->salary?></p>
+                        </td>
+                        <td class="listings_area">
+                            <p class="city"><?php echo $job->CITY?></p>
+                        </td>
+                    </tr>
+
+              <?php  } ?>
+
             </tbody>
         </table>
     </div>
 </div>
 
+<script>
+
+    // Basic example
+    $(document).ready(function () {
+        $('#dtBasicExample').DataTable( {
+            "pagingType": "full_numbers"
+        } );
+        $('.dataTables_length').addClass('bs-select');
+    });
+
+</script>
+
+
+
+
+<!--
 <div class="search_nav">
     <ul class="pagination" style="margin-left: 500px;">
         <li class="prev_results">
@@ -82,10 +82,10 @@
         <li class="inactive">1</li>
 
 
-        <li><a class="text_link" href="page2.php">2</a></li>
+        <li><a class="text_link" href="">2</a></li>
 
 
-        <li><a class="text_link" href="?page=3">3</a></li>
+        <li><a class="text_link" href="">3</a></li>
 
 
         <li class="inactive">...</li>
@@ -99,5 +99,5 @@
 
         </li>
     </ul>
-</div>
+</div>-->
 
