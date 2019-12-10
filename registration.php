@@ -126,7 +126,7 @@ if(isset($_POST['registration'])){
 
             <p class="h4 mb-4">Sign up</p>
 
-            <input type="hidden" name="usertype" value="101">
+            <input type="hidden" name="usertype" value="102">
             <!-- First name -->
             <span><font color='red'><?php echo $firstNameError?></font></span>
             <input type="text" id="firstname" name="firstname" value="<?php echo $firstname?>" class="form-control mb-4" placeholder="First name">

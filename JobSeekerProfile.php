@@ -23,7 +23,6 @@ class JobSeekerProfile
         return $user;
     }
 
-
     public function updateJobseekerDetails($db, $user_id, $firstname, $lastname, $phone, $email, $address){
         $sql = "UPDATE user_details 
                         SET user_firstname = :firstname,

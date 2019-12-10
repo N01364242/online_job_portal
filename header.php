@@ -10,11 +10,7 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item"><a href="Home.php">Home</a></li>
-        <li class="nav-item dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">JobSeeker Profile</a>
-            <div class="dropdown-menu">
-                <a href="#" class="dropdown-item">User Profile</a>
-                <a href="#" class="dropdown-item">Search Job</a>
-            </div></li>
+        <li class="nav-item"><a href="login.php">JobSeeker Profile</a></li>
         <li class="nav-item dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Employers Profile</a>
             <div class="dropdown-menu">
                 <a href="#" class="dropdown-item">Employer Profile</a>

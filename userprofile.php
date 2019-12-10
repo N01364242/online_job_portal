@@ -34,6 +34,7 @@ $firstNameError = "";
 $lastNameError = "";
 $emailError = "";
 $passwordError = "";
+$addressError = "";
 
 $firstname = "";
 $lastname = "";
@@ -67,6 +68,9 @@ if(isset($_POST['personal_details'])){
 
                 if($password == "") {
                     $passwordError = "Please fill the Password field.";
+                }
+                if($address == ""){
+                    $addressError = "Please fill the Address field.";
                 }
             }else {
 
@@ -207,6 +211,7 @@ if(isset($_POST['personal_details'])){
                                 <label for="first_name"><h4>First name</h4></label>
                                 <input type="text" class="form-control" name="first_name" id="first_name"
                                        placeholder="first name" title="enter your first name if any." value="<?php echo $user_fname;?>">
+                                <span><font color="red"><?php echo $firstNameError?></font></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -215,6 +220,7 @@ if(isset($_POST['personal_details'])){
                                 <label for="last_name"><h4>Last name</h4></label>
                                 <input type="text" class="form-control" name="last_name" id="last_name"
                                        placeholder="last name" title="enter your last name if any." value="<?php echo $user_lname;?>">
+                                <span><font color="red"><?php echo $lastNameError?></font></span>
                             </div>
                         </div>
 
@@ -240,6 +246,7 @@ if(isset($_POST['personal_details'])){
                                 <label for="email"><h4>Email</h4></label>
                                 <input type="email" class="form-control" name="email" id="email"
                                        placeholder="you@email.com" title="enter your email." value="<?php echo $user_email;?>">
+                                <span><font color="red"><?php echo $emailError?></font></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -248,6 +255,7 @@ if(isset($_POST['personal_details'])){
                                 <label for="address"><h4>Address</h4></label>
                                 <input type="text" class="form-control"  name="address" id="location" placeholder="somewhere"
                                        title="enter a location" value="<?php echo $user_address;?>">
+                                <span><font color="red"><?php echo $addressError?></font></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -256,6 +264,7 @@ if(isset($_POST['personal_details'])){
                                 <label for="password"><h4>Password</h4></label>
                                 <input type="password" class="form-control" name="password" id="password"
                                        placeholder="password" title="enter your password." value="<?php echo $user_password;?>">
+                                <span><font color="red"><?php echo $passwordError?></font></span>
                             </div>
                         </div>
                        <!-- <div class="form-group">
