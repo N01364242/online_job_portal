@@ -1,18 +1,110 @@
 <?php
 include_once 'Database.php';
+include_once 'JobSeekerProfile.php';
 
 $db = Database::getDb();
+
+$j = new JobSeekerProfile();
 
 session_start();
 $user_id = $_SESSION['user_id'];
 
+
+$user = $j->jobseekerDetailsById($db, $user_id);
+/*
 $sql = "SELECT * FROM user_details join login on user_details.user_id=login.useraccid WHERE user_id = :user_id";
 $pdostm = $db->prepare($sql);
 $pdostm->bindValue(':user_id', $user_id, PDO::PARAM_STR);
 $pdostm->execute();
-$user = $pdostm->fetch(PDO::FETCH_OBJ);
+$user = $pdostm->fetch(PDO::FETCH_OBJ);*/
 
 
+if($user){
+    $user_fname = $user->user_firstname;
+    $user_lname = $user->user_lastname;
+    $user_phone = $user->phone;
+    $user_email = $user->email;
+    $user_password = $user->password;
+    $user_address = $user->address;
+}
+
+
+
+$firstNameError = "";
+$lastNameError = "";
+$emailError = "";
+$passwordError = "";
+
+$firstname = "";
+$lastname = "";
+$phone = "";
+$email = "";
+$address = "";
+$password = "";
+
+if(isset($_POST['personal_details'])){
+
+    $firstname = $_POST['first_name'];
+    $lastname = $_POST['last_name'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $address = $_POST['address'];
+    $password = $_POST['password'];
+
+
+            if($firstname == "" || $lastname == "" || $phone == "" || $email == "" || $address == "" || $password == "") {
+                if($firstname == "") {
+                    $firstNameError = "Please fill the First Name field.";
+                }
+
+                if($lastname == "") {
+                    $lastNameError = "Please fill the Last Name field.";
+                }
+
+                if($email == "") {
+                    $emailError = "Please fill the Email field.";
+                }
+
+                if($password == "") {
+                    $passwordError = "Please fill the Password field.";
+                }
+            }else {
+
+                /*$sql = "UPDATE user_details
+                        SET user_firstname = :firstname,
+                        user_lastname = :lastname ,
+                        phone =:phone,
+                        email = :email,
+                        address = :address
+                        /*user_image = :user_image,*/
+                       /* WHERE user_id = :id";
+                $pst = $db->prepare($sql);
+                $pst->bindParam(':firstname', $firstname);
+                $pst->bindParam(':lastname', $lastname);
+                $pst->bindParam(':phone', $phone);
+                $pst->bindParam(':email', $email);
+                $pst->bindParam(':address', $address);
+                /*$pst->bindParam(':user_image', $data);*/
+                /*$pst->bindParam(':id', $user_id);
+                $count = $pst->execute();*/
+
+                $count = $j->updateJobseekerDetails($db, $user_id, $firstname, $lastname, $phone, $email, $address);
+                $count1 = $j->updateLogin($db, $user_id, $email, $password);
+
+                if ($count && $count1) {
+                    $user_fname = $firstname;
+                    $user_lname = $lastname;
+                    $user_phone = $phone;
+                    $user_email = $email;
+                    $user_password = $password;
+                    $user_address = $address;
+
+                    echo "Student details added sucessfully";
+                } else {
+                    echo "Problem adding a student details";
+                }
+            }
+}
 
 
 ?>
@@ -42,7 +134,7 @@ $user = $pdostm->fetch(PDO::FETCH_OBJ);
 
     <script>
         $(function () {
-            $("#header").load("header.php");
+            $("#header").load("jobSeekerHeader.php");
         });
         $(function () {
             $("#footer").load("footer.php");
@@ -63,12 +155,12 @@ $user = $pdostm->fetch(PDO::FETCH_OBJ);
 
             <div class="text-center">
                 <div>
-                    <img src="images/IMG_3069.JPG" class="avatar img-circle img-fluid"
+                    <img src="" class="avatar img-circle img-fluid"
                          alt="avatar" width="200px" height="200px" style="object-fit: cover">
                 </div>
 
                 <h6>Upload a different photo...</h6>
-                <input type="file" class="text-center center-block file-upload">
+                <input type="file" name="image" id="image" class="text-center center-block file-upload">
             </div>
             <br>
 
@@ -108,13 +200,13 @@ $user = $pdostm->fetch(PDO::FETCH_OBJ);
             <div class="tab-content">
                 <div class="tab-pane active" id="personal">
 
-                    <form class="form" action="##" method="post" id="registrationForm">
+                    <form class="form" action="" method="post" id="personalDetailsForm">
                         <div class="form-group">
 
                             <div class="col-xs-6">
                                 <label for="first_name"><h4>First name</h4></label>
                                 <input type="text" class="form-control" name="first_name" id="first_name"
-                                       placeholder="first name" title="enter your first name if any." value="<?php echo $user->user_firstname?>">
+                                       placeholder="first name" title="enter your first name if any." value="<?php echo $user_fname;?>">
                             </div>
                         </div>
                         <div class="form-group">
@@ -122,7 +214,7 @@ $user = $pdostm->fetch(PDO::FETCH_OBJ);
                             <div class="col-xs-6">
                                 <label for="last_name"><h4>Last name</h4></label>
                                 <input type="text" class="form-control" name="last_name" id="last_name"
-                                       placeholder="last name" title="enter your last name if any." value="<?php echo $user->user_lastname?>">
+                                       placeholder="last name" title="enter your last name if any." value="<?php echo $user_lname;?>">
                             </div>
                         </div>
 
@@ -131,7 +223,7 @@ $user = $pdostm->fetch(PDO::FETCH_OBJ);
                             <div class="col-xs-6">
                                 <label for="phone"><h4>Phone</h4></label>
                                 <input type="text" class="form-control" name="phone" id="phone"
-                                       placeholder="enter phone" title="enter your phone number if any." value="<?php echo $user->  phone?>">
+                                       placeholder="enter phone" title="enter your phone number if any." value="<?php echo $user_phone;?>">
                             </div>
                         </div>
 
@@ -147,15 +239,15 @@ $user = $pdostm->fetch(PDO::FETCH_OBJ);
                             <div class="col-xs-6">
                                 <label for="email"><h4>Email</h4></label>
                                 <input type="email" class="form-control" name="email" id="email"
-                                       placeholder="you@email.com" title="enter your email." value="<?php echo $user->email?>">
+                                       placeholder="you@email.com" title="enter your email." value="<?php echo $user_email;?>">
                             </div>
                         </div>
                         <div class="form-group">
 
                             <div class="col-xs-6">
-                                <label for="email"><h4>Address</h4></label>
-                                <input type="email" class="form-control" id="location" placeholder="somewhere"
-                                       title="enter a location" value="<?php echo $user->address?>">
+                                <label for="address"><h4>Address</h4></label>
+                                <input type="text" class="form-control"  name="address" id="location" placeholder="somewhere"
+                                       title="enter a location" value="<?php echo $user_address;?>">
                             </div>
                         </div>
                         <div class="form-group">
@@ -163,7 +255,7 @@ $user = $pdostm->fetch(PDO::FETCH_OBJ);
                             <div class="col-xs-6">
                                 <label for="password"><h4>Password</h4></label>
                                 <input type="password" class="form-control" name="password" id="password"
-                                       placeholder="password" title="enter your password." value="<?php echo $user->password?>">
+                                       placeholder="password" title="enter your password." value="<?php echo $user_password;?>">
                             </div>
                         </div>
                        <!-- <div class="form-group">
@@ -177,11 +269,11 @@ $user = $pdostm->fetch(PDO::FETCH_OBJ);
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <br>
-                                <button class="btn btn-lg btn-success" type="submit"><i
+                                <button class="btn btn-lg btn-success" name="personal_details" type="submit"><i
                                             class="glyphicon glyphicon-ok-sign"></i> Save
                                 </button>
-                                <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset
-                                </button>
+                                <!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset
+                                </button>-->
                             </div>
                         </div>
                     </form>
@@ -194,7 +286,7 @@ $user = $pdostm->fetch(PDO::FETCH_OBJ);
 
                     <h2></h2>
 
-                    <form class="form" action="##" method="post" id="registrationForm">
+                    <form class="form" action="" method="post" id="educationForm">
                         <div id="field">
                             <div id="field0">
                                 <div class="form-group">
@@ -244,8 +336,6 @@ $user = $pdostm->fetch(PDO::FETCH_OBJ);
                                 <button class="btn btn-lg btn-success" type="submit"><i
                                             class="glyphicon glyphicon-ok-sign"></i> Save
                                 </button>
-                                <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset
-                                </button>
                             </div>
                         </div>
                     </form>
@@ -254,7 +344,7 @@ $user = $pdostm->fetch(PDO::FETCH_OBJ);
 
                 <div class="tab-pane" id="experience">
 
-                    <form class="form" action="##" method="post" id="registrationForm">
+                    <form class="form" action="" method="post" id="experienceForm">
                         <div id="exp">
                             <div id="exp0">
                                 <div class="form-group">
@@ -302,10 +392,9 @@ $user = $pdostm->fetch(PDO::FETCH_OBJ);
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <br>
-                                <button class="btn btn-lg btn-success pull-right" type="submit"><i
+                                <button class="btn btn-lg btn-success" type="submit"><i
                                             class="glyphicon glyphicon-ok-sign"></i> Save
                                 </button>
-                                <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
                             </div>
                         </div>
                     </form>

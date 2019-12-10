@@ -1,6 +1,10 @@
 <?php
 
 require_once 'Database.php';
+require_once  'JobSeekerProfile.php';
+
+$db = Database::getDb();
+$j = new JobSeekerProfile();
 
 $firstNameError = "";
 $lastNameError = "";
@@ -19,7 +23,6 @@ if(isset($_POST['registration'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
     $usertype = $_POST['usertype'];
-    $db = Database::getDb();
 
     if($firstname == "" || $lastname == "" || $email == "" || $password == "") {
         if($firstname == "") {
@@ -39,13 +42,16 @@ if(isset($_POST['registration'])){
         }
     }else {
 
-        $sql = "INSERT INTO user_details (user_firstname, user_lastname, email) 
+        /*$sql = "INSERT INTO user_details (user_firstname, user_lastname, email)
                   VALUES (:first_name, :last_name, :email) ";
         $pst = $db->prepare($sql);
         $pst->bindParam(':first_name', $firstname);
         $pst->bindParam(':last_name', $lastname);
         $pst->bindParam(':email', $email);
-        $count = $pst->execute();
+        $count = $pst->execute();*/
+
+        $count = $j->RegistrationDetails($db, $firstname, $lastname, $email);
+
         if ($count) {
             echo "Student details added sucessfully";
         } else {
@@ -53,13 +59,16 @@ if(isset($_POST['registration'])){
         }
 
 
-        $sqlLogin = "INSERT INTO login (useraccid, username, password, usertype_id) 
+        /*$sqlLogin = "INSERT INTO login (useraccid, username, password, usertype_id)
                   VALUES (LAST_INSERT_ID(), :email, :password, :usertype) ";
         $pstm = $db->prepare($sqlLogin);
         $pstm->bindParam(':email', $email);
         $pstm->bindParam(':password', $password);
         $pstm->bindParam(':usertype', $usertype);
-        $count1 = $pstm->execute();
+        $count1 = $pstm->execute();*/
+
+        $count1 = $j->InsertLoginDetails($db, $email, $password, $usertype);
+
         if ($count1) {
             echo "Student details added sucessfully";
         } else {

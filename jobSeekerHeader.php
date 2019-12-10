@@ -13,15 +13,13 @@
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li class="nav-item"><a href="Home.php">Home</a></li>
                         <li> </li>
-                        <li class="nav-item"><a href="EmployerProfile.php">My Profile</a></li>
+                        <li class="nav-item"><a href="userprofile.php">My Profile</a></li>
                         <li> </li>
-                        <li class="nav-item"><a href="jobpost.php">Post Job</a></li>
+                        <li class="nav-item"><a href="appliedJobs.php">Applied Job</a></li>
                         <li> </li>
-                        <li class="nav-item"><a href="Home.php">Notification</a></li>
-                        <li>  </li>
-                        <li class="nav-item dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php  echo $email?></a>
+                        <li class="nav-item dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php  echo "User"?></a>
                             <div class="dropdown-menu">
-                                <a href="EmployerLogOut.php" class="dropdown-item">Logout</a>
+                                <a href="logout.php" class="dropdown-item">Logout</a>
                             </div></li>
                 </div>
                 </ul>

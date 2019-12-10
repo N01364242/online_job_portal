@@ -1,62 +1,48 @@
 <?php
 include_once 'Database.php';
+include_once 'JobSeekerJobApplication.php';
 
 $db = Database::getDb();
-session_start();
-
-$employee_id = $_SESSION['user_id'];
 
 
 $id = $_GET['id'];
 
-$sql = "SELECT * FROM job_post join job_type on job_post.job_type_id = job_type.id 
-        join location on job_post.joblocation_id = location.loc_id WHERE job_id = :id";
-$pdostm = $db->prepare($sql);
-$pdostm->bindValue(':id', $id, PDO::PARAM_STR);
-$pdostm->execute();
-$job = $pdostm->fetch(PDO::FETCH_OBJ);
+$j = new JobSeekerJobApplication();
+$job = $j->jobDetailsById($db, $id);
 
+
+$_SESSION['job_title'] = $job->job_title;
 
 if(isset($_POST['apply'])){
 
-    $name = $_FILES['resume']['name'];
-    $type = $_FILES['resume']['type'];
-    $data = file_get_contents($_FILES['resume']['tmp_name']);
 
-    $application_status = "active";
-    $apply_date = date("Y/m/d");
+    session_start();
+    if($_SESSION['user_id']) {
 
 
+        $employee_id = $_SESSION['user_id'];
+        $name = $_FILES['resume']['name'];
+        $type = $_FILES['resume']['type'];
+        $data = file_get_contents($_FILES['resume']['tmp_name']);
 
-    $to = $_SESSION['user'];
-    $subject = "HTML email";
-    $message = " Hello ";
+        $application_status = "active";
+        $apply_date = date("Y/m/d");
 
-    $headers = "From: aproject258@gmail.com\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+        $count = $j->ApplyJob($db, $id, $employee_id, $application_status, $apply_date, $data);
 
-
-
-
-    $sqlApply = "INSERT INTO job_application_request (job_id, employee_id, application_status, apply_date, resume) 
-                  VALUES (:id, :employee_id, :application_status, :apply_date, :resume) ";
-    $pst = $db->prepare($sqlApply);
-    $pst->bindParam(':id', $id);
-    $pst->bindParam(':employee_id', $employee_id);
-    $pst->bindParam(':application_status', $application_status);
-    $pst->bindParam(':apply_date', $apply_date);
-    $pst->bindParam(':resume', $data);
-    $count = $pst->execute();
-    if ($count) {
-        echo " Added sucessfully";
-        mail($to,$subject,$message);
-        header("Location: home.php");
-    } else {
-        echo "Problem adding a student details";
+        if ($count) {
+            //echo " Added sucessfully";
+            header("Location: jobseekermail.php");
+        } else {
+            echo "Problem adding a student details";
+        }
+    }else{
+        echo "<script>
+                alert('Please Login first to apply for this job.');
+                window.location.href='login.php';
+                </script>";
     }
 }
-
 
 ?>
 
@@ -107,7 +93,7 @@ if(isset($_POST['apply'])){
                 </ul>
 
             <div id="desc">
-                <!--<p>
+                <p>
                     A small company that is working to solve issues revolving around geriatrics is looking to hire a Senior Engineer.
                     This next person that they add to the team will work across technologies.
                     You will be involved in software development, Machine Learning/AI work and more across an IoT platform.<br/>
@@ -133,8 +119,8 @@ if(isset($_POST['apply'])){
                 <p>&nbsp;</p>
                 <p>
                     Applicants must be currently authorized to work in the Canada on a full-time basis now and in the future.
-                </p>-->
-                <p>&nbsp;<?php echo $job->job_desc?></p>
+                </p>
+                <!--<p>&nbsp;<?php /*echo $job->job_desc*/?></p>-->
                 <h2>Apply for this Job</h2>
                 <button class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal">Apply Now</button>
             </div>
@@ -162,20 +148,17 @@ if(isset($_POST['apply'])){
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="firstname">First Name</label>
-                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name">
+                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name" required>
                     </div>
                     <div class="form-group">
                         <label for="lastname">Last Name</label>
-                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name">
+                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                    </div>
+
                     <div class="form-group">
                         <label for="resume">Resume</label>
                         <input type="file" id="resume" name="resume">

@@ -12,14 +12,9 @@ $pdostm->execute();
 
 ?>
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-
-
 <div id="center_column" class="clearfix equal_height">
-    <div id="listings_module" class="table-responsive">
-        <table class="table table-hover" id="dtBasicExample" style="width:60%; margin: auto;">
+    <div id="listings_module" class="table-responsive" style="padding: 20px;">
+        <table class="table table-hover" id="dtBasicExample" style="width:90%; margin: auto;">
             <thead>
             <tr>
                 <th class="listings_title">Job Title</th>
