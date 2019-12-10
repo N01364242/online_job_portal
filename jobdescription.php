@@ -1,49 +1,4 @@
 <?php
-include_once 'Database.php';
-include_once 'JobSeekerJobApplication.php';
-
-$db = Database::getDb();
-
-
-$id = $_GET['id'];
-
-$j = new JobSeekerJobApplication();
-$job = $j->jobDetailsById($db, $id);
-
-
-$_SESSION['job_title'] = $job->job_title;
-
-if(isset($_POST['apply'])){
-
-
-    session_start();
-    if($_SESSION['user_id']) {
-
-
-        $employee_id = $_SESSION['user_id'];
-        $name = $_FILES['resume']['name'];
-        $type = $_FILES['resume']['type'];
-        $data = file_get_contents($_FILES['resume']['tmp_name']);
-
-        $application_status = "active";
-        $apply_date = date("Y/m/d");
-
-        $count = $j->ApplyJob($db, $id, $employee_id, $application_status, $apply_date, $data);
-
-        if ($count) {
-            //echo " Added sucessfully";
-            header("Location: jobseekermail.php");
-        } else {
-            echo "Problem adding a student details";
-        }
-    }else{
-        echo "<script>
-                alert('Please Login first to apply for this job.');
-                window.location.href='login.php';
-                </script>";
-    }
-}
-
 ?>
 
 <html>
@@ -74,21 +29,21 @@ if(isset($_POST['apply'])){
 <div class="container">
     <div class="row justify-content-center p-5 m-5" >
         <div class="w-85  bg-light p-5">
-            <h1><?php echo $job->job_title?></h1>
+            <h1>Senior Engineer (OOP)</h1>
 
                 <ul id="job_summary" class="clearfix">
 
                     <li>
-                        <h6>Date Posted: &nbsp;&nbsp;<?php echo $job->created_date?></h6>
+                        <h6>Date Posted: &nbsp;&nbsp;November 05, 2019</h6>
                     </li>
                     <li>
-                        <h6>Salary: &nbsp;&nbsp;<?php echo $job->salary?></h6>
+                        <h6>Salary: &nbsp;&nbsp;$85K-120K DOE</h6>
                     </li>
                     <li>
-                        <h6>Type: &nbsp;&nbsp;<?php echo $job->job_type?></h6>
+                        <h6>Category: &nbsp;&nbsp;Software</h6>
                     </li>
                     <li>
-                        <h6>Location: &nbsp;&nbsp;<?php echo $job->CITY?></h6>
+                        <h6>Location: &nbsp;&nbsp;Toronto, ON</h6>
                     </li>
                 </ul>
 
@@ -120,7 +75,7 @@ if(isset($_POST['apply'])){
                 <p>
                     Applicants must be currently authorized to work in the Canada on a full-time basis now and in the future.
                 </p>
-                <!--<p>&nbsp;<?php /*echo $job->job_desc*/?></p>-->
+                <p>&nbsp;</p>
                 <h2>Apply for this Job</h2>
                 <button class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal">Apply Now</button>
             </div>
@@ -145,25 +100,28 @@ if(isset($_POST['apply'])){
 
             <!-- Modal body -->
             <div class="modal-body">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form>
                     <div class="form-group">
                         <label for="firstname">First Name</label>
-                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name" required>
+                        <input type="text" class="form-control" id="firstname" placeholder="Enter First Name">
                     </div>
                     <div class="form-group">
                         <label for="lastname">Last Name</label>
-                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name" required>
+                        <input type="text" class="form-control" id="lastname" placeholder="Enter Last Name">
                     </div>
                     <div class="form-group">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email">
                     </div>
-
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
                     <div class="form-group">
                         <label for="resume">Resume</label>
                         <input type="file" id="resume" name="resume">
                     </div>
-                    <button type="submit" class="btn btn-outline-primary" name="apply">Submit</button>
+                    <button type="submit" class="btn btn-outline-primary">Submit</button>
                 </form>
             </div>
 

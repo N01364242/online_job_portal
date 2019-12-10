@@ -6,7 +6,6 @@ $lastNameError = "";
 $emailError = "";
 $passwordError = "";
 $phoneError = "";
-$companyError = "";
 
 $firstname = "";
 $lastname = "";
@@ -14,7 +13,7 @@ $email = "";
 $password = "";
 $usertype = "";
 $phone = "";
-$comapny = "";
+
 
 if(isset($_POST['add'])){
     $firstname = $_POST['firstname'];
@@ -22,11 +21,10 @@ if(isset($_POST['add'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
     $phone = $_POST['phone'];
-    $comapny = $_POST['company'];
     $usertype = $_POST['usertype'];
     $db = Database::getDb();
 
-    if($firstname == "" || $lastname == "" || $email == "" || $password == "" || $phone =="" || $comapny =="") {
+    if($firstname == "" || $lastname == "" || $email == "" || $password == "" || $phone =="") {
         if($firstname == "") {
             $firstNameError = "Please fill the First Name field.";
         }
@@ -46,21 +44,17 @@ if(isset($_POST['add'])){
         if($phone == "") {
             $emailError = "Please fill the Phone field.";
         }
-
-        if($comapny == "") {
-            $passwordError = "Please fill the Comapany field.";
-        }
     }else {
 
-        $sql = "INSERT INTO user_details (user_firstname, user_lastname, password, email, phone, companyname) 
-                  VALUES (:first_name, :last_name, :password, :email, :phone, :companyname) ";
+        $sql = "INSERT INTO user_details (user_firstname, user_lastname, password, email, phone) 
+                  VALUES (:first_name, :last_name, :password, :email, :phone) ";
         $pst = $db->prepare($sql);
         $pst->bindParam(':first_name', $firstname);
         $pst->bindParam(':last_name', $lastname);
         $pst->bindParam(':password', $password);
         $pst->bindParam(':email', $email);
         $pst->bindParam(':phone', $phone);
-        $pst->bindParam(':companyname', $comapny);
+       // $pst->bindParam(':companyname', $comapny);
         $count = $pst->execute();
         if ($count) {
             echo "Employer details added sucessfully";
@@ -93,11 +87,11 @@ if(isset($_POST['add'])){
 <html>
 <head>
     <title>JobStock Hire Talent</title>
-    <link rel="shortcut icon" href="../images/logo.png">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/employerLogin.css">
-    <link rel="stylesheet" href="../css/EmployerForm.css">
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="shortcut icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/employerLogin.css">
+    <link rel="stylesheet" href="css/EmployerForm.css">
+    <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -105,10 +99,10 @@ if(isset($_POST['add'])){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
         $(function(){
-            $("#header").load("../header.php");
+            $("#header").load("header.php");
         });
         $(function(){
-            $("#footer").load("../footer.php");
+            $("#footer").load("footer.php");
         });
     </script>
 </head>
@@ -169,12 +163,12 @@ if(isset($_POST['add'])){
                     </div>
                 </div>
                 <br />
-                <div class="form-group">
+               <!-- <div class="form-group">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="company" value="<?php echo $comapny?>" placeholder="Company Name" required="required"><?php echo $companyError?>
+                        <input type="text" class="form-control" name="company" value="" placeholder="Company Name" required="required">
                     </div>
                 </div>
-                <br />
+                <br />-->
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block btn-lg" name="add">Sign Up</button>
                 </div>
@@ -185,7 +179,7 @@ if(isset($_POST['add'])){
     </div>
 </div>
 
-<?php include "EmployerLoginProcess.php"?>
+<?php include "EmployerLoginProcess.php" ?>
 <div id="myModal1" class="modal fade">
     <div class="modal-dialog modal-login">
         <div class="modal-content">
