@@ -50,6 +50,7 @@
         </form>
         <!-- Default form contact -->
     </div>
+
 </div>
 <div id="footer"></div>
 </body>

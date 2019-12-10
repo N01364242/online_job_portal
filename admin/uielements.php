@@ -46,7 +46,7 @@ include "sidebar.php";
                     <a class="dropdown-item" id="Business Stream" href="#" onclick="showDetails(this);">Businesss Stream</a>
                     <a class="dropdown-item" id="SkillSet" href="#" onclick="showDetails(this);">SkillSet</a>
                     <a class="dropdown-item"  id="SkillLevel"href="#" onclick="showDetails(this);">Skill level</a>
-                    <a class="dropdown-item"  id="FAQ" href="#" onclick="showDetails(this);">FAQ</a>
+
                 </div>
             </div>
             <!--/Dropdown primary-->
@@ -65,7 +65,7 @@ include "sidebar.php";
 
                     </tbody>
                 </table>
-               <!-- </form>-->
+               <!--</form>-->
                 <!--Modal on Clicking Details button-->
                 <div id="myModal" class="modal fade" role="dialog" tabindex="-1" role="dialog"
                      aria-labelledby="myModalLabel" aria-hidden="true">
@@ -100,7 +100,6 @@ include "adminFooter.php";
 <script>
     function showDetails(button) {
         var dropdownId = button.id;
-        alert(dropdownId);
 
                $.ajax({
             url: "loadUIElements.php",
@@ -120,25 +119,34 @@ include "adminFooter.php";
 
                  $("#uihead").append(tr_str);
                  $("#uicontents").empty();
+                 var id ='';
+                 var streamName='';
                  for (var i = 0; i < len; i++) {
-                     var id = response[i].id;
-                     var streamName = response[i].business_stream_name;
-
+                     if(dropdownId=='Business Stream'){
+                     id = response[i].id;
+                     streamName = response[i].business_stream_name;
+                     }else if(dropdownId=='SkillSet'){
+                      id = response[i].skill_id;
+                       streamName = response[i].skill_name
+                     }else{
+                      id = response[i].skill_level_id;
+                       streamName = response[i].level_name;
+                     }
 
                      tr_str = "<tr id='"+ dropdownId+id+"'>" +
                          "<td align='center'>" + id + "</td>" +
                          "<td align='center'>" + streamName + "</td>" +
                          "<td align='center'><button class ='btn btn-primary btn-lg' data-toggle ='modal' data-target='#myModal'"+
                          " id='"+dropdownId +"_"+ id + "_"+streamName+"' onclick='updateDetails(this);'>Update</button></td>"+
-                         "<td align='center' id='" + id + "'><button class='btn btn-danger btn-sm' onclick='remove(this);'>Delete</button></td>"+
+                         "<td align='center' id='"+dropdownId +"_" + id + "'><button class='btn btn-danger btn-sm' onclick='remove(this);'>Delete</button></td>"+
                          "</tr>";
 
                      $("#uicontents").append(tr_str);
 
                  }
              var tr_str = "<tr><td align='center'><input type='text' name='id' disabled/></td>"+
-                 "<td align='center'><input type='text' name='name'/></td>" +
-                 "<td><input type='submit' name='insert' value='Add'></td></tr>"
+                 "<td align='center'><input type='text' class='name' name='name' required/></td>" +
+                 "<td align='center'><button class='btn btn-danger btn-sm' id='"+dropdownId+"' onclick='addUI(this);'>Add</button></td></tr>"
                  $("#uicontents").append(tr_str);
              }
         });
@@ -147,20 +155,20 @@ include "adminFooter.php";
 
         var id = button.parentElement.getAttribute("id");
         var k = button.closest("tr");
-
+        var res = id.split("_");
         if(confirm('Are you sure to remove this record ?'))
         {
             $.ajax({
-                url: "ProcessUIElements.php",
+                url: "DeleteUIElements.php",
                 method: "POST",
-                data: {id: id},
+                data: {id: res[1], uielement: res[0]},
                 error: function() {
                     alert('Something is wrong');
                 },
                 success: function(data) {
                     alert(data);
                     k.remove();
-                    alert("Record removed successfully");
+
                 }
             });
         }
@@ -173,6 +181,23 @@ include "adminFooter.php";
         $("#name").val(res[2]);
     }
 
+    function addUI(button){
+        var ui = button.id;
+        var name = $(button).closest("tr").find("input.name").val();
+        $.ajax({
+            url: "AddUIElements.php",
+            method: "POST",
+            data: {name: name,uielement:ui},
+            error: function() {
+                alert('Something is wrong');
+            },
+            success: function(data) {
+                alert(data);
+                showDetails(button);
+            }
+        });
+    }
+
     function updateContent(button) {
         var title= $('#title').text();
         var id= $('#id').val();
@@ -180,14 +205,14 @@ include "adminFooter.php";
         $.ajax({
             url: "UpdateUIElement.php",
             method: "POST",
-            data: {id: id, name: name},
+            data: {id: id, name: name, uielement: title},
             error: function() {
                 alert('Something is wrong');
             },
             success: function(data) {
 
                 button.id =title;
-                alert("Record updated successfully");
+                alert(data);
                 showDetails(button);
             }
         });

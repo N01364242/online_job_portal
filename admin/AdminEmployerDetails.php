@@ -114,13 +114,13 @@ $data = $pst->fetchAll(PDO::FETCH_OBJ);
         <script>
             function showDetails(button){
                 var employerId = button.id;
-                alert(employerId);
                 $.ajax({
                     url: "employer.php",
                     method: "GET",
                     data: { "employerId": employerId},
                         success: function (response) {
                             var employer = JSON.parse(response);
+                            alert(response);
                             $("#fname").text(employer[0].user_firstname);
                             $("#lname").text(employer[0].user_lastname);
                             $("#rdate").text(employer[0].registrationDate);

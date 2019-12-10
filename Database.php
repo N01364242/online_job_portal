@@ -3,8 +3,8 @@ class Database
 {    //properties
     private static $user = 'root';
     private static $pass = '';
-    private static $db = 'portal';
-    private static $dsn = 'mysql:host=localhost;dbname=portal';
+    private static $db = 'testportal';
+    private static $dsn = 'mysql:host=localhost;dbname=testportal';
     private static $dbcon;
 
     private function __construct()
