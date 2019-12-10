@@ -13,15 +13,14 @@
         <li class="nav-item"><a href="login.php">JobSeeker Profile</a></li>
         <li class="nav-item dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Employers Profile</a>
             <div class="dropdown-menu">
-                <a href="#" class="dropdown-item">Employer Profile</a>
-                <a href="Employer/EmployerLogin.php" class="dropdown-item">Post Job</a>
+                <a href="EmployerLogin.php" class="dropdown-item">Employer Profile</a>
             </div></li>
         <li class="nav-item dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact</a>
             <div class="dropdown-menu">
-                <a href="#" onclick="location.href='contact.php';" class="dropdown-item">Contact</a>
+                <a href="contact.php" class="dropdown-item">Contact</a>
                 <a href="#" class="dropdown-item">FAQ</a>
             </div></li>
-        <li class="nav-item"><button type="button" class="btn btn-outline-primary" onclick="location.href='login.php';">Login</button></li>
+        <li class="nav-item"><button type="button" class="btn btn-outline-primary" onclick="location.href='Login.php';">Login</button></li>
         <li class="nav-item"><button type="button" class="btn btn-outline-primary" onclick="location.href='registration.php';">SignUp</button></li>
         </div>
     </ul>

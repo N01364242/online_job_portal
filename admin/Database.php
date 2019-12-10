@@ -5,8 +5,7 @@ class Database
 {
     private static $user ='root';
     private static $pass='';
-    private static $db= 'humber';
-    private static $dsn ='mysql:host=localhost;dbname=portal';
+    private static $dsn ='mysql:host=localhost;dbname=testportal';
     private static $dbcon;
 
     private function __construct()

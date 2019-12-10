@@ -13,14 +13,14 @@ $email=$_SESSION['user'];
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item"><a href="Home.php">Home</a></li>
+                        <li class="nav-item"><a href="EmployerLogin.php">Home</a></li>
                         <li> </li>
                         <li class="nav-item"><a href="EmployerProfile.php">My Profile</a></li>
                         <li> </li>
                         <li class="nav-item"><a href="jobpost.php">Post Job</a></li>
                         <li> </li>
-                        <li class="nav-item"><a href="Home.php">Notification</a></li>
-                        <li>  </li>
+                       <li class="nav-item"><a href="EmployerJobs.php">My Jobs</a></li>
+                       <!-- <li>  </li> -->
                         <li class="nav-item dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php  echo $email?></a>
                             <div class="dropdown-menu">
                                 <a href="EmployerLogOut.php" class="dropdown-item">Logout</a>

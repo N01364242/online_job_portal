@@ -6,11 +6,11 @@ session_destroy();
 <html>
 <head>
     <title>JobStock Hire Talent</title>
-    <link rel="shortcut icon" href="../images/logo.png">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/employerLogin.css">
-    <link rel="stylesheet" href="../css/EmployerForm.css">
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="shortcut icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/employerLogin.css">
+    <link rel="stylesheet" href="css/EmployerForm.css">
+    <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -18,10 +18,10 @@ session_destroy();
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
         $(function(){
-            $("#header").load("../header.php");
+            $("#header").load("header.php");
         });
         $(function(){
-            $("#footer").load("../footer.php");
+            $("#footer").load("footer.php");
         });
     </script>
 </head>
@@ -101,7 +101,7 @@ session_destroy();
                 <h4 class="modal-title">Sign in</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
-            <form action="SecurePage.php" method="post">
+            <form action="" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="input-group">

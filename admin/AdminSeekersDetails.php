@@ -98,9 +98,8 @@ $data = $pst->fetchAll(PDO::FETCH_OBJ);
                                     </div>
                                     <div class="modal-body">
                                         <p><b>Degree Name:</b> <span id="dname"></span></p>
-                                        <p><b>Major:</b><span id="major"></span> </p>
                                         <p><b>University Name :</b><span id="university_name"></span></p>
-                                        <p><b>Current Student:</b><span id="current"></span></p>
+                                        <p><b>Start Date:</b><span id="start"></span></p>
                                         <p><b>Completed Date:</b><span id="comdate"></span></p>
                                     </div>
                                 </div>
@@ -131,9 +130,8 @@ $data = $pst->fetchAll(PDO::FETCH_OBJ);
                         $("#email").text(employer[0].email);
                         $("#address").text(employer[0].address);
                         $("#dname").text(employer[0].degree_name);
-                        $("#major").text(employer[0].major);
                         $("#university").text(employer[0].university_name);
-                        $("#current").text(employer[0].is_current_student);
+                        $("#start").text(employer[0].start_date);
                         $("#comdate").text(employer[0].completed_date);
 
                     }

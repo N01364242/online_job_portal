@@ -5,7 +5,30 @@
 }
 
 #bkimg{
-    background-image: url("../Employer/images/emps.png");
+    background-image: url("../images/emps.png");
     width: auto;
     height: 664px;
+}
+
+#cmp{
+    margin-left: 320px;
+}
+
+#postjob{
+    padding-top: 100px;
+    margin-left: 200px;
+}
+
+#jobtable{
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+#updation{
+    padding-top: 150px;
+    padding-left: 150px;
+}
+
+.space{
+    padding-left: 200px;
 }

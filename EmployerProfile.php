@@ -1,6 +1,7 @@
 <?php
 require_once 'Database.php';
 require_once 'BusinessStream.php';
+//require_once 'CompanyDetail.php';
 
 session_start();
 $ename=$_SESSION['user'];
@@ -24,24 +25,21 @@ foreach ($data as $s){
     $epswd = $s->password;
     $eeml =  $s->email;
     $ephn = $s->phone;
-    $ecpname = $s->companyname;
 }
 
 if ( isset($_POST['update'] ) ) {
     $ufirstname = $_POST['fn'];
     $ulastname = $_POST['ln'];
     $uphone = $_POST['pn'];
-    $ucomapny = $_POST['cpn'];
 
     $query = "UPDATE user_details inner join login on useraccid = user_id SET user_firstname='$ufirstname', user_lastname='$ulastname', 
-              phone='$uphone',  companyname='$ucomapny' WHERE login.username = '$ename'";
+              phone='$uphone' WHERE login.username = '$ename'";
     $statment = $db->prepare($query);
     $upcount = $statment->execute();
     if($upcount){
         $efname = $ufirstname;
         $elname = $ulastname;
         $ephn = $uphone;
-        $ecpname = $ucomapny;
     }
     else{
         echo "error";
@@ -51,13 +49,13 @@ if ( isset($_POST['update'] ) ) {
 <html>
 <head>
     <title>JobStock Hire Talent</title>
-    <link rel="shortcut icon" href="../images/logo.png">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/employerLogin.css">
-    <link rel="stylesheet" href="../css/EmployerForm.css">
-    <link rel="stylesheet" href="../css/EmployerPage.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/EmployerProfile.css">
+    <link rel="shortcut icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/employerLogin.css">
+    <link rel="stylesheet" href="css/EmployerForm.css">
+    <link rel="stylesheet" href="css/EmployerPage.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/EmployerProfile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -65,10 +63,10 @@ if ( isset($_POST['update'] ) ) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
         $(function(){
-            $("#header").load("../header2.php");
+            $("#header").load("header2.php");
         });
         $(function(){
-            $("#footer").load("../footer.php");
+            $("#footer").load("footer.php");
         });
     </script>
 </head>
@@ -102,10 +100,6 @@ if ( isset($_POST['update'] ) ) {
             <div class="form-group col-md-6">
                 <label for="inputCity">Phone</label>
                 <input type="text" class="form-control" id="inputCity" name="pn" value="<?php echo $ephn?>">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputCity">Company Name</label>
-                <input type="text" class="form-control" id="inputCity" name="cpn" value="<?php echo $ecpname?>">
                 <?php } ?>
             </div>
         </div>
@@ -115,7 +109,6 @@ if ( isset($_POST['update'] ) ) {
 </div>
 
 <button class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal" id="cmp">Add Company Detail</button>
-<?php include "CompanyDetail.php"?>
 <div class="modal" id="myModal">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">

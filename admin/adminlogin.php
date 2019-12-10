@@ -13,7 +13,7 @@
     <div class="header">
         <img src="../images/adminlogo.png" width="200" height="60">
     </div>
-    <div class="container-login100" style="background-image: url('../images/background.jpg');">
+    <div class="container-login100" style="background-image: url('../images/x.jpg');">
 
         <div class="wrap-login100">
 
@@ -24,7 +24,7 @@
 
 
                 <div class="inputs" data-validate = "Username is required">
-                    <input class="input100" type="text" name="username"><br/>
+                    <input class="input100" type="text" name="username" required><br/>
 
 
                 </div>

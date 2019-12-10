@@ -9,6 +9,7 @@ $db = Database::getDb();
 
 $s = new JobType();
 $jtype = $s->listjobtype(Database::getDb());
+$location = $s->listlocationtype(Database::getDb());
 
         $sql1 = "Select * from user_details inner join login on useraccid = user_id where login.username = '$email'";
         $pstd = $db->prepare($sql1);
@@ -33,11 +34,79 @@ $pst->execute();
 $data1 = $pst->fetchAll(PDO::FETCH_OBJ);
 
 foreach($data1 as $d){
+    $cid = $d->company_id;
     $cn = $d->company_name;
     $dsp = $d->company_desc;
-   // $bsi = $d->business_stream_id;
     $dt = $d->establishment_date;
     $ul = $d->company_url;
+}
+
+/*$sql4 = "Select * from job_post inner join job_type on id = job_type_id where job_post.postedby_id = '$empid'";
+$pst4 = $db->prepare($sql4);
+$pst4->execute();
+$data4 = $pst4->fetchAll(PDO::FETCH_OBJ);
+foreach($data4 as $jb){
+    $jid = $jb->id;
+    $lid = $jb->joblocation_id;
+}*/
+
+$jobtitleError = "";
+$jobdescError = "";
+$joblocationError = "";
+$jobtypeError = "";
+
+$jobtitle = "";
+$jobdesc = "";
+$joblocation = "";
+$jobtype= "";
+
+if ( isset($_POST['insertjob'] ) ) {
+
+    $jobtitle = $_POST['jobtitle'];
+    $jobdesc = $_POST['jobdesc'];
+    $joblocation = $_POST['joblocation'];
+    $jobtype = $_POST['jobtype'];
+    $jobsalary = $_POST['salary'];
+    $jobexperience = $_POST['experience'];
+    $jobrole = $_POST['roles'];
+
+    if ($jobtitle == "" || $jobdesc == "" || $joblocation == "" || $jobtype == "" || $jobsalary == "" || $jobexperience == "" || $jobrole == "") {
+        if ($jobtitle == "") {
+            $jobtitleError = "Please fill the First Name field.";
+        }
+
+        if ($jobdesc == "") {
+            $jobdescError = "Please fill the Last Name field.";
+        }
+
+        if ($joblocation == "") {
+            $joblocationError = "Please fill the Email field.";
+        }
+
+        if ($jobtype == "") {
+            $jobtypeError = "Please fill the Password field.";
+        }
+
+    } else {
+
+        $sql3 = "INSERT INTO job_post (job_title, postedby_id, job_type_id, company_id, job_desc, joblocation_id, is_active, salary, job_roles, experience) 
+                  VALUES (:job_title, $empid, :job_type_id, $cid , :job_desc, :joblocation_id, 'y', :salary, :job_roles, :experience) ";
+        $pst3 = $db->prepare($sql3);
+        $pst3->bindParam(':job_title', $jobtitle);
+        $pst3->bindParam(':job_type_id', $jobtype);
+        $pst3->bindParam(':job_desc', $jobdesc);
+        $pst3->bindParam(':joblocation_id', $joblocation);
+        $pst3->bindParam(':salary', $jobsalary);
+        $pst3->bindParam(':job_roles', $jobrole);
+        $pst3->bindParam(':experience', $jobexperience);
+        $count3 = $pst3->execute();
+        if ($count3) {
+            echo "Employer details added sucessfully";
+        } else {
+            echo "Problem adding a Employer details";
+        }
+
+    }
 }
 
 
@@ -46,12 +115,12 @@ foreach($data1 as $d){
 <html>
 <head>
     <title>JobStock Hire Talent</title>
-    <link rel="shortcut icon" href="../images/logo.png">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/employerLogin.css">
-    <link rel="stylesheet" href="../css/EmployerForm.css">
-    <link rel="stylesheet" href="../css/EmployerPage.css">
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="shortcut icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/employerLogin.css">
+    <link rel="stylesheet" href="css/EmployerForm.css">
+    <link rel="stylesheet" href="css/EmployerPage.css">
+    <link rel="stylesheet" href="css/footer.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -65,10 +134,10 @@ foreach($data1 as $d){
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
     <script>
         $(function(){
-            $("#header").load("../header2.php");
+            $("#header").load("header2.php");
         });
         $(function(){
-            $("#footer").load("../footer.php");
+            $("#footer").load("footer.php");
         });
     </script>
 </head>
@@ -162,38 +231,62 @@ foreach($data1 as $d){
 
                             <div class="col-xs-6">
                                 <label for="first_name"><h4>Job Title </h4></label>
-                                <input type="text" class="form-control" name="title" id="first_name">
+                                <input type="text" class="form-control" name="jobtitle">
                             </div>
                         </div>
                         <div class="form-group">
 
                             <div class="col-xs-6">
                                 <label for="last_name"><h4>Job Description</h4></label>
-                                <input type="text" class="form-control" name="jobdesc" id="last_name">
+                                <input type="text" class="form-control" name="jobdesc">
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group col-md-6"">
+                                <label for="inputlg"><h4>Job Location</h4></label>
+                        <select id="inputState" class="form-control" name="joblocation">
+                            <?php foreach ($location as $l){?>
+                            <option value="<?php echo $l->loc_id;?>"> <?php echo $l->CITY;}?></option>
+                        </select>
 
-                            <div class="col-xs-6">
-                                <label for="phone"><h4>Job Location</h4></label>
-                                <input type="text" class="form-control" name="loc" id="phone">
-                            </div>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="phone"><h4>Job Type</h4></label>
-                            <select id="inputState" class="form-control" name="business">
+                            <select id="inputState" class="form-control" name="jobtype">
                                 <?php foreach ($jtype as $p){?>
                                 <option value="<?php echo $p->id;?>"> <?php echo $p->job_type;}?></option>
                             </select>
                         </div>
 
+                <div class="form-group">
+
+                    <div class="col-xs-6">
+                        <label for="last_name"><h4>Salary</h4></label>
+                        <input type="text" class="form-control" name="salary">
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-xs-6">
+                        <label for="last_name"><h4>Required Experience</h4></label>
+                        <input type="text" class="form-control" name="experience">
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-xs-6">
+                        <label for="last_name"><h4>Job Roles and Responsibilites </h4></label>
+                        <input type="text" class="form-control" name="roles">
+                    </div>
+                </div>
+
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <br>
-                                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                <!-- <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button> -->
+                                <button class="btn btn-lg btn-success" type="submit" name="insertjob"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
                             </div>
                         </div>
                     </form>
