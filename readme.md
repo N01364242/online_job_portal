@@ -56,6 +56,29 @@
   * Can add the company details.
   * View the applicants applied for the job.
   
+   ####<h4> Graphical User Interface 
+  
+  #####Admin Pages
+  
+ * Admin Login Page
+  
+  ![](img/admin_login.PNG)
+  
+  * Admin Dashboard
+  
+  ![](img/admin_dashboard.PNG)
+  
+  * Admin UIElements
+  
+  ![](img/Dmin_uielements.PNG)
+  
+  * Admin Compose mail
+  
+  ![](img/admin_composemail.PNG)
+  
+   * Admin View Employers
+   
+   ![](img/admin_viewEmployer.PNG)
   
   ####<h4> Database Design
   
@@ -74,6 +97,7 @@ Hence, we have identified below tables to achieve desired functionality.
     9. job_post: Contain the details of the job posted by the employer
     10. skill_set: static table that contain the skill sets
     11. skill_level: static table that contain the skill level.
+    
     
   
   
