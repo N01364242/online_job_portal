@@ -25,6 +25,7 @@ include_once "Database.php";
     <!-- Custom styles for this template -->
     <link href="../css/adminHeader.css" rel="stylesheet">
     <link href="../css/adminMainContent.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/userdetails.js"></script>
 
 
 </head>
@@ -59,6 +60,7 @@ $data = $pst->fetchAll(PDO::FETCH_OBJ);
                             <tbody>
                             <?php
                             foreach($data as $seeker) {
+                                //loop through the seeker details
                                 ?>
                                 <tr>
                                   <td><?php echo $seeker->user_id ?></td>
@@ -66,7 +68,7 @@ $data = $pst->fetchAll(PDO::FETCH_OBJ);
                                     <td><?php echo $seeker->phone ?></td>
                                     <td><?php echo $seeker->email ?></td>
                                     <td><button class ="btn btn-primary btn-lg" data-toggle ="modal" data-target="#myModal"
-                                                id="<?php echo $seeker->user_id?>" onclick="showDetails(this);">Details</button></td>
+                                                id="<?php echo $seeker->user_id?>" onclick="showSeekerDetails(this);">Details</button></td>
 
                                 </tr>
                             <?php } ?>
@@ -111,38 +113,9 @@ $data = $pst->fetchAll(PDO::FETCH_OBJ);
                 <!-- /content-panel -->
             </div>
             <!-- /col-lg-4 -->
+            <!-- /col-lg-4 -->
         </div>
-        <script>
-            <!-- To show the details of seekers when we click on Details button-->
-            function showDetails(button){
-                var seekerId = button.id;
-                alert(seekerId);
-                $.ajax({
-                    url: "seeker.php",
-                    method: "GET",
-                    data: { "seekerId": seekerId},
-                    success: function (response) {
-                        var employer = JSON.parse(response);
-                        $("#fname").text(employer[0].user_firstname);
-                        $("#lname").text(employer[0].user_lastname);
-                        $("#rdate").text(employer[0].registrationDate);
-                        $("#phone").text(employer[0].phone);
-                        $("#email").text(employer[0].email);
-                        $("#address").text(employer[0].address);
-                        $("#dname").text(employer[0].degree_name);
-                        $("#university").text(employer[0].university_name);
-                        $("#start").text(employer[0].start_date);
-                        $("#comdate").text(employer[0].completed_date);
 
-                    }
-
-                });
-            }
-
-
-
-
-        </script>
  <?php
  include "adminFooter.php";
 ?>

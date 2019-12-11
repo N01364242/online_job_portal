@@ -1,15 +1,18 @@
 <?php
 require_once 'Database.php';
-$db = Database::getDb();
-$sql1 = "Select count(us.user_id) as userId, u.usertype_name as name from user_details us inner join login l on l.useraccid= us.user_id  inner join user_type u on u.usertype_id = l.usertype_id group by u.usertype_name";
-$pst1 = $db->prepare($sql1);
-$pst1->execute();
-$data1 = $pst1->fetchAll(PDO::FETCH_ASSOC);
+session_start();
+//Get the count of userid for each user type
+    $db = Database::getDb();
+    $sql1 = "Select count(us.user_id) as userId, u.usertype_name as name from user_details us inner join login l on l.useraccid= us.user_id  inner join user_type u on u.usertype_id = l.usertype_id group by u.usertype_name";
+    $pst1 = $db->prepare($sql1);
+    $pst1->execute();
+    $data1 = $pst1->fetchAll(PDO::FETCH_ASSOC);
+//Get the count of applicants applied for jobs for a particular employer
+    $sql2 = "Select count(j.job_id) as jobId, j.postedby_id as employer, count(a.employee_id) as applicants from job_post j inner join job_application_request a  on j.job_id= a.job_id group by employer";
+    $pst2 = $db->prepare($sql2);
+    $pst2->execute();
+    $data2 = $pst2->fetchAll(PDO::FETCH_ASSOC);
 
-$sql2 = "Select count(j.job_id) as jobId, j.postedby_id as employer, count(a.employee_id) as applicants from job_post j inner join job_application_request a  on j.job_id= a.job_id group by employer";
-$pst2 = $db->prepare($sql2);
-$pst2->execute();
-$data2 = $pst2->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
@@ -96,7 +99,6 @@ $data2 = $pst2->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 <?php
-session_start();
 include "adminHeader.php";
 include "sidebar.php";
 include "adminFooter.php";
