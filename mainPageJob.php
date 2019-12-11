@@ -4,7 +4,7 @@ require_once 'Database.php';
 $dbcon = Database::getDb();
 
 $sql = "select * from job_post join job_type on job_post.job_type_id = job_type.id 
-                                  join location on job_post.joblocation_id = location.loc_id";
+                                  join location on job_post.joblocation_id = location.loc_id where is_active = 'y'";
 
 $pdostm = $dbcon->prepare($sql);
 $pdostm->setFetchMode(PDO::FETCH_OBJ);

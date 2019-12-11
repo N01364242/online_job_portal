@@ -41,8 +41,8 @@ try {
         )
     );
     //Recipients
-    $mail->setFrom('bhoominpatel94@gmail.com', 'Job Stock');
-    $mail->addAddress($email, '');     // Add a recipient
+    $mail->setFrom('aproject258@gmail.com', 'Job Stock');
+    $mail->addAddress($email, $userfname);     // Add a recipient
 
 
 
