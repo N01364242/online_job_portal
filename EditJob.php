@@ -15,8 +15,12 @@ if(isset($_POST['upt'])){
     $id = $_POST['sid'];
     $jttl = $_POST['jtitle'];
     $jds = $_POST['jdesc'];
+    $jsl = $_POST['jsalary'];
+    $jexp = $_POST['jexp'];
+    $jrole = $_POST['jroles'];
 
-    $query8 = "UPDATE job_post SET job_title='$jttl', job_desc='$jds' WHERE job_id = '$id'";
+    $query8 = "UPDATE job_post SET job_title='$jttl', job_desc='$jds' , salary='$jsl' , job_roles='$jrole' , experience='$jexp'
+                 WHERE job_id = '$id'";
     $statment8 = $db->prepare($query8);
     $upcount1 = $statment8->execute();
     if($upcount1){
@@ -70,22 +74,22 @@ if(isset($_POST['upt'])){
         </div>
     Job Description:
             <div class="md-form">
-        <input type="text" id="form101" class="form-control" name="jdesc" value="<?php echo $jjl->job_desc; ?>" />
+            <textarea id="form101" class="form-control" name="jdesc"><?php echo $jjl->job_desc; ?></textarea>
         <br />
         </div>
         Salary:
         <div class="md-form">
-            <input type="text" id="form101" class="form-control" name="jdesc" value="<?php echo $jjl->salary; ?>" />
+            <input type="text" id="form101" class="form-control" name="jsalary" value="<?php echo $jjl->salary; ?>" />
             <br />
         </div>
         Required Experience:
         <div class="md-form">
-            <input type="text" id="form101" class="form-control" name="jdesc" value="<?php echo $jjl->experience; ?>" />
+            <input type="text" id="form101" class="form-control" name="jexp" value="<?php echo $jjl->experience; ?>" />
             <br />
         </div>
         Job Roles and Responsibilities:
         <div class="md-form">
-            <input type="text" id="form101" class="form-control" name="jdesc" value="<?php echo $jjl->job_roles; ?>" />
+            <textarea id="form101" class="form-control" name="jroles"><?php echo $jjl->job_roles; ?></textarea>
             <br />
         </div>
     <?php }?>

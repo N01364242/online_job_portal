@@ -41,20 +41,6 @@ foreach($data1 as $d){
     $ul = $d->company_url;
 }
 
-/*$sql4 = "Select * from job_post inner join job_type on id = job_type_id where job_post.postedby_id = '$empid'";
-$pst4 = $db->prepare($sql4);
-$pst4->execute();
-$data4 = $pst4->fetchAll(PDO::FETCH_OBJ);
-foreach($data4 as $jb){
-    $jid = $jb->id;
-    $lid = $jb->joblocation_id;
-}*/
-
-$jobtitleError = "";
-$jobdescError = "";
-$joblocationError = "";
-$jobtypeError = "";
-
 $jobtitle = "";
 $jobdesc = "";
 $joblocation = "";
@@ -182,11 +168,12 @@ if ( isset($_POST['insertjob'] ) ) {
                                 <input type="text" class="form-control" name="cname" value="<?php echo $cn;?>">
                             </div>
                         </div>
+
                         <div class="form-group">
 
                             <div class="col-xs-6">
-                                <label for="last_name"><h4>Company Description</h4></label>
-                                <input type="text" class="form-control" name="desc" value="<?php echo $dsp;?>">
+                                <label for="email"><h4>Company URL</h4></label>
+                                <input type="text" class="form-control" name="curl" value="<?php echo $ul;?>">
                             </div>
                         </div>
 
@@ -204,11 +191,12 @@ if ( isset($_POST['insertjob'] ) ) {
                                 <input type="text" class="form-control" name="estdate" value="<?php echo $dt;?>">
                             </div>
                         </div>
+
                         <div class="form-group">
 
-                            <div class="col-xs-6">
-                                <label for="email"><h4>Company URL</h4></label>
-                                <input type="email" class="form-control" name="curl" value="<?php echo $ul;?>">
+                            <div class="col-xs-12">
+                                <label for="last_name"><h4>Company Description</h4></label>
+                                <textarea class="form-control" name="desc" ><?php echo $dsp;?></textarea>
                             </div>
                         </div>
 
@@ -237,22 +225,24 @@ if ( isset($_POST['insertjob'] ) ) {
                                 <input type="text" class="form-control" name="jobtitle">
                             </div>
                         </div>
+
                         <div class="form-group">
 
                             <div class="col-xs-6">
-                                <label for="last_name"><h4>Job Description</h4></label>
-                                <input type="text" class="form-control" name="jobdesc">
+                                <label for="last_name"><h4>Salary</h4></label>
+                                <input type="text" class="form-control" name="salary">
                             </div>
                         </div>
 
+
                         <div class="form-group col-md-6"">
-                                <label for="inputlg"><h4>Job Location</h4></label>
+                        <label for="inputlg"><h4>Job Location</h4></label>
                         <select id="inputState" class="form-control" name="joblocation">
                             <?php foreach ($location as $l){?>
                             <option value="<?php echo $l->loc_id;?>"> <?php echo $l->CITY;}?></option>
                         </select>
 
-                        </div>
+                </div>
 
                         <div class="form-group col-md-6">
                             <label for="phone"><h4>Job Type</h4></label>
@@ -262,27 +252,29 @@ if ( isset($_POST['insertjob'] ) ) {
                             </select>
                         </div>
 
+
                 <div class="form-group">
 
-                    <div class="col-xs-6">
-                        <label for="last_name"><h4>Salary</h4></label>
-                        <input type="text" class="form-control" name="salary">
+                    <div class="col-xs-12">
+                        <label for="last_name"><h4>Job Description</h4></label>
+                        <textarea class="form-control" name="jobdesc"></textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
 
-                    <div class="col-xs-6">
+                    <div class="col-xs-12">
                         <label for="last_name"><h4>Required Experience</h4></label>
                         <input type="text" class="form-control" name="experience">
                     </div>
                 </div>
 
+
                 <div class="form-group">
 
-                    <div class="col-xs-6">
+                    <div class="col-xs-12">
                         <label for="last_name"><h4>Job Roles and Responsibilites </h4></label>
-                        <input type="text" class="form-control" name="roles">
+                        <textarea class="form-control" name="roles"></textarea>
                     </div>
                 </div>
 

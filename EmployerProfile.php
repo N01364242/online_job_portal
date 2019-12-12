@@ -128,7 +128,7 @@ if ( isset($_POST['update'] ) ) {
                     </div>
                     <div class="form-group">
                         <label for="last_name"><h4>Company Description</h4></label>
-                        <input type="text" class="form-control" name="desc" id="last_name">
+                        <textarea class="form-control" name="desc" id="last_name"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="inputlg"><h4>Business Stream</h4></label>
@@ -143,7 +143,7 @@ if ( isset($_POST['update'] ) ) {
                     </div>
                     <div class="form-group">
                         <label for="email"><h4>Company URL</h4></label>
-                        <input type="email" class="form-control" name="curl" id="email">
+                        <input type="text" class="form-control" name="curl" id="email">
                     </div>
                     <button class="btn btn-lg btn-success" type="submit" name="save">Save</button>
                 </form>

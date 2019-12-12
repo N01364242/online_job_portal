@@ -161,7 +161,7 @@ if(isset($_POST['add'])){
                 <br />
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="tel" class="form-control" name="phone" value="<?php echo $phone?>" placeholder="Phone Number" required="required"><?php echo $phoneError?>
+                        <input type="tel" class="form-control" name="phone" value="<?php echo $phone?>" placeholder=" Phone Number(Optional)"><?php echo $phoneError?>
                     </div>
                 </div>
                 <br />

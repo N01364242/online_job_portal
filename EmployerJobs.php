@@ -55,6 +55,9 @@ foreach ($data as $r){
                 <th class="listings_title">Job Title</th>
                 <th>Job Description</th>
                 <th id="space">Status</th>
+                <th>Salary</th>
+                <th>Experience</th>
+                <th>Job Roles And Responsibilities</th>
                 <th></th>
                 <th>Actions</th>
                 <th></th>
@@ -66,6 +69,9 @@ foreach ($data as $r){
                 <td><?php echo $lj->job_title; ?></td>
                 <td><?php echo  $lj->job_desc; ?></td>
                 <td><?php echo  $lj->is_active; ?></td>
+                <td><?php echo  $lj->salary; ?></td>
+                <td><?php echo  $lj->experience; ?></td>
+                <td><?php echo  $lj->job_roles; ?></td>
 
                 <td><form action="ViewJobApplication.php" method="post">
                         <input type="hidden" name="id"
