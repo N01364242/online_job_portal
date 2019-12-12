@@ -159,7 +159,7 @@ if(isset($_POST['personal_details'])){
 
             <div class="text-center">
                 <div>
-                    <img src="" class="avatar img-circle img-fluid"
+                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"  class="avatar img-circle img-fluid"
                          alt="avatar" width="200px" height="200px" style="object-fit: cover">
                 </div>
 

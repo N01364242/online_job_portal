@@ -61,7 +61,7 @@ if(isset($_POST['apply'])){
 
     <script>
         $(function(){
-            $("#header").load("header.php");
+            $("#header").load("jobSeekerHeader.php");
         });
         $(function(){
             $("#footer").load("footer.php");
@@ -93,7 +93,8 @@ if(isset($_POST['apply'])){
             </ul>
 
             <div id="desc">
-                <p>
+                <p><?php echo $job->job_desc?></p>
+                <!--<p>
                     A small company that is working to solve issues revolving around geriatrics is looking to hire a Senior Engineer.
                     This next person that they add to the team will work across technologies.
                     You will be involved in software development, Machine Learning/AI work and more across an IoT platform.<br/>
@@ -101,21 +102,23 @@ if(isset($_POST['apply'])){
 
                 <p>
                     They have a very flexible culture and are looking for people that want to help build out their company.
-                </p>
+                </p>-->
 
-                <h2>Required Skills &amp; Experience</h2>
-                <ul>
+                <h2>Required Experience</h2>
+                <p><?php echo $job->experience?></p>
+                <!--<ul>
                     <li>3+ years of professional experience in Software Development, Machine Learning, Data Engineering environment</li>
                     <li>Ability to excel in a dynamic environment</li>
                     <li>Experience with modern JavaScript frameworks and OOP languages</li>
                     <li>Self-starter attitude that also works well with others</li>
                     <li>Excellent communication, verbal and written, skills</li>
-                </ul>
+                </ul>-->
 
-                <h2>Desired Skills &amp; Experience</h2>
-                <ul>
+                <h2>Roles and Responsibilities</h2>
+                <p><?php echo $job->job_roles?></p>
+                <!--<ul>
                     <li>Ability to integrate cloud technologies</li>
-                </ul>
+                </ul>-->
                 <p>&nbsp;</p>
                 <p>
                     Applicants must be currently authorized to work in the Canada on a full-time basis now and in the future.
