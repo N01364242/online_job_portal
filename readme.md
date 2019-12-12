@@ -40,6 +40,14 @@
   * Admin can view the graph of how many employers, job seekeres are registered.
   * Admin can view the graph of how many applicants has applied for the job and how many job posted by an employer
   
+  | Role  | Feature                                                                                                        | File                                                                                                  | js             |
+|-------|----------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|----------------|
+| Admin | View jobseeker and employer information                                                                        | AdminEmployerDetails.php AdminSeeker.php seeker.php employer.php                                      | userdetails.js |
+| Admin | Admin can send reply mail to any query send by anyone through site                                             | inbox.js receivedmail.php                                                                            | inbox.php      |
+| Admin |  View,Edit,Delete,Update skillset, skill level, businessstream etc.                                            | uielements.php loaduielements.php deleteuielements.php addelementsuielements.php updateuielements.php | uielements.js  |
+| Admin | Admin can view the graph of how many employers, job seekeres are registered.                                   | dashboard_admin.php                                                                                   | N/A            |
+| Admin | Admin can view the graph of how many applicants has applied for the job and how many job posted by an employer | dashboard_admin.php                                                                                   | N/A            |
+  
   
 #####<h5> JOB SEEKER FEATURE  (by Bhoomi Patel)
   
@@ -55,6 +63,15 @@
   * Add and delete the job posting.
   * Can add the company details.
   * View the applicants applied for the job.
+  
+  | Role     | Feature                                                                                                                                                                              | File                                       |
+|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
+| Employer | Employer Login and Signup                                                                                                                                                            | EmployerLogin.php                          |
+| Employer | Employer can view and update their profile  Employer can add company detail                                                                                                          | EmployerProfile.php                        |
+| Employer | Employer can view company detail they added on profile page Employer can post the job                                                                                                | jobpost.php                                |
+| Employer | Employer can view the job list they posted with all the job post detail Employer can edit the that job  Employer can disable job and make that job no longer available for employees | EmployerJobs.php EditJob.php DeleteJob.php |
+| Employer | Employer can view the list of employees that applied for that specific job                                                                                                           | ViewJobApplication.php                     |
+| Employer | Employer can send the mail to user that applied for job                                                                                                                              | EmployerMail.php                           |
   
    ####<h4> Graphical User Interface 
   
@@ -79,7 +96,8 @@
    * Admin View Employers
    
    ![](img/admin_viewEmployer.PNG)
-  
+   
+
   ####<h4> Database Design
   
   The database that is used to design the web application is MySQL. We have used MySQL to store
