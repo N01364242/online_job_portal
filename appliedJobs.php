@@ -1,13 +1,14 @@
 <?php
 
 require_once "Database.php";
+require_once "JobSeekerJobApplication.php";
 
 $db = Database::getDb();
 
 session_start();
 $employee_id = $_SESSION['user_id'];
 
-$sql = "SELECT * FROM job_application_request join job_post on job_application_request.job_id = job_post.job_id 
+/*$sql = "SELECT * FROM job_application_request join job_post on job_application_request.job_id = job_post.job_id
         join job_type on job_post.job_type_id = job_type.id 
         join location on job_post.joblocation_id = location.loc_id 
         where employee_id= :employee_id";
@@ -16,8 +17,11 @@ $sql = "SELECT * FROM job_application_request join job_post on job_application_r
 $pdostm = $db->prepare($sql);
 $pdostm->bindValue(':employee_id', $employee_id, PDO::PARAM_STR);
 $pdostm->execute();
-$jobs = $pdostm->fetchAll(PDO::FETCH_OBJ);
+$jobs = $pdostm->fetchAll(PDO::FETCH_OBJ);*/
 
+$j = new JobSeekerJobApplication();
+
+$jobs = $j->AppliedJobs($db, $employee_id);
 
 
 
