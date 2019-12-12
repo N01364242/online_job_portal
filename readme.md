@@ -56,12 +56,14 @@
   * Send mail
   * Seeker can upload the resume
   
- | Role       | Feature                                                                                       | Files                                                                                                       |
-|------------|-----------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| Job Seeker | Login and Signup                                                                              | login.php registration.php JobSeekerProfile.php                                                             |
-| Job Seeker | Job Seeker can apply to available jobs with resume and get the mail regarding job application | home.php jobSeekerHome.php mainPageJob.php jobdescription.php JobSeekerJobApplication.php jobseekermail.php |
-| Job Seeker | View and update their profile                                                                 | userprofile.php JobSeekerProfile.php                                                                        |
-| Job Seeker | View list of Applied jobs                                                                     | appliedjobs.php                                                                                             |
+ 
+ | Role       | Feature                                                                                       | Files                                                                                                                 |
+|------------|-----------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| Job Seeker | Login and Signup                                                                              | login.php,  registration.php,  JobSeekerProfile.php                                                                   |
+| Job Seeker | Job Seeker can apply to available jobs with resume and get the mail regarding job application | home.php,  jobSeekerHome.php,  mainPageJob.php,  jobdescription.php,  JobSeekerJobApplication.php,  jobseekermail.php |
+| Job Seeker | View and update their profile                                                                 | userprofile.php,  JobSeekerProfile.php                                                                                |
+| Job Seeker | View list of Applied jobs                                                                     | appliedjobs.php                                                                                                       |
+ 
   
   #####<h5> EMPLOYER FEATURE  (by Toral Panasuria)
   
