@@ -80,12 +80,6 @@ session_destroy();
                 </div>
                 <br />
                 <div class="form-group">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="company" placeholder="Company Name" required="required">
-                    </div>
-                </div>
-                <br />
-                <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
                 </div>
             </div>

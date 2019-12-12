@@ -6,11 +6,6 @@ $db = Database::getDb();
 if(isset($_POST['viewemp'])) {
     $id = $_POST['id'];
 }
-/*$sql11 = "SELECT * FROM job_post where job_id = '$id'";
-$pdostm11 = $db->prepare($sql11);
-$pdostm11->bindValue(':job_id', $id, PDO::PARAM_INT);
-$pdostm11->execute();
-$jl = $pdostm11->fetchAll(PDO::FETCH_OBJ);*/
 
 $sql12 = "SELECT * FROM job_application_request inner join user_details on employee_id = user_id where job_id = '$id'";
 $pdostm12 = $db->prepare($sql12);
@@ -56,6 +51,7 @@ $candidatelist = $pdostm12->fetchAll(PDO::FETCH_OBJ);
                 <th>Employee Name</th>
                 <th>Employee Email</th>
                 <th>Apply Date</th>
+                <th>Reply</th>
             </tr>
             </thead>
             <tbody>
@@ -63,9 +59,55 @@ $candidatelist = $pdostm12->fetchAll(PDO::FETCH_OBJ);
                 <tr>
                     <td><?php echo $cl->user_firstname; ?></td>
                     <td><?php echo $cl->email; ?></td>
-                    <td><?php echo  $cl->apply_date; ?></td>
+                    <td><?php echo $cl->apply_date; ?></td>
+                    <td><button type="submit" data-toggle ='modal' data-target='#myModal2'>Reply</button></td>
 
-                </tr>
+                    </div> <div id="myModal2" class="modal fade" role="dialog" tabindex="-1" role="dialog"
+                                aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="gen-case">
+                                        Send Mail To Employee
+                                    </h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <div class="modal-body">
+
+                                    <div class="panel-body">
+                                        <div class="compose-mail">
+                                            <form role="form-horizontal" method="post" action="EmployerMail.php">
+
+                                                <div class="form-group">
+                                                    <label for="to" class=""> To:</label>
+                                                    <input type="text" tabindex="1" id="to" name ="to" class="form-control">
+                                                    <input type="hidden"  id="name" name ="name">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="subject" class=""> Subject:</label>
+                                                    <input type="text" tabindex="1" id="subject" name="subject" class="form-control">
+                                                </div>
+
+                                                <div class="compose-editor">
+                                                    <textarea class="wysihtml5 form-control" rows="9" id="draft" name="draft" placeholder="Your mail"></textarea>
+                                                </div>
+
+                                                <div class="compose-btn">
+                                                    <button class="btn btn-theme btn-sm"><i class="fa fa-check"></i> Send</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     </td>
+                 </tr>
             <?php }?>
             </tbody>
         </table>

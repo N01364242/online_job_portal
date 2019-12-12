@@ -22,6 +22,7 @@ if(isset($_POST['add'])){
     $password = $_POST['password'];
     $phone = $_POST['phone'];
     $usertype = $_POST['usertype'];
+    $logindate = date("Y/m/d");
     $db = Database::getDb();
 
     if($firstname == "" || $lastname == "" || $email == "" || $password == "" || $phone =="") {
@@ -46,12 +47,11 @@ if(isset($_POST['add'])){
         }
     }else {
 
-        $sql = "INSERT INTO user_details (user_firstname, user_lastname, password, email, phone) 
-                  VALUES (:first_name, :last_name, :password, :email, :phone) ";
+        $sql = "INSERT INTO user_details (user_firstname, user_lastname, email, phone) 
+                  VALUES (:first_name, :last_name, :email, :phone) ";
         $pst = $db->prepare($sql);
         $pst->bindParam(':first_name', $firstname);
         $pst->bindParam(':last_name', $lastname);
-        $pst->bindParam(':password', $password);
         $pst->bindParam(':email', $email);
         $pst->bindParam(':phone', $phone);
        // $pst->bindParam(':companyname', $comapny);
@@ -63,12 +63,14 @@ if(isset($_POST['add'])){
         }
 
 
-        $sqlLogin = "INSERT INTO login (useraccid, username, password, usertype_id) 
-                  VALUES (LAST_INSERT_ID(), :email, :password, :usertype) ";
+
+        $sqlLogin = "INSERT INTO login (useraccid, username, password, usertype_id, lastlogin) 
+                  VALUES (LAST_INSERT_ID(), :email, :password, :usertype, :lastlogin) ";
         $pstm = $db->prepare($sqlLogin);
         $pstm->bindParam(':email', $email);
         $pstm->bindParam(':password', $password);
         $pstm->bindParam(':usertype', $usertype);
+        $pstm->bindParam(':lastlogin', $logindate);
         $count1 = $pstm->execute();
         if ($count1) {
             echo "Employer details added sucessfully";
@@ -139,7 +141,7 @@ if(isset($_POST['add'])){
                 <div class="form-group">
                     <div class="input-group">
                       <!--  <span class="input-group-addon"><i class="fa fa-user"></i></span> -->
-                        <input type="hidden" name="usertype" value="102">
+                        <input type="hidden" name="usertype" value="101">
                         <input type="text" class="form-control" name="firstname" value="<?php echo $firstname?>" placeholder="Firstname" required="required"><?php echo $firstNameError?>
                         <input type="text" class="form-control" name="lastname" value="<?php echo $lastname?>" placeholder="Lastname" required="required"><?php echo $lastNameError?>
                     </div>
@@ -159,16 +161,10 @@ if(isset($_POST['add'])){
                 <br />
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="phone" value="<?php echo $phone?>" placeholder="Phone Number" required="required"><?php echo $phoneError?>
+                        <input type="tel" class="form-control" name="phone" value="<?php echo $phone?>" placeholder="Phone Number" required="required"><?php echo $phoneError?>
                     </div>
                 </div>
                 <br />
-               <!-- <div class="form-group">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="company" value="" placeholder="Company Name" required="required">
-                    </div>
-                </div>
-                <br />-->
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block btn-lg" name="add">Sign Up</button>
                 </div>

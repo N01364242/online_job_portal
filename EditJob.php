@@ -65,7 +65,7 @@ if(isset($_POST['upt'])){
     <input type="hidden" name="sid" value="<?php echo $jjl->job_id; ?>" />
     Job Title:
         <div class="md-form">
-            <input type="text" id="form101" class="form-control"  name="jtitle"  value="<?php echo $jjl->job_title ?>"/>
+            <input type="text" id="form101" class="form-control"  name="jtitle"  value="<?php echo $jjl->job_title; ?>"/>
             <br />
         </div>
     Job Description:

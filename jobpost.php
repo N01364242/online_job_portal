@@ -101,9 +101,12 @@ if ( isset($_POST['insertjob'] ) ) {
         $pst3->bindParam(':experience', $jobexperience);
         $count3 = $pst3->execute();
         if ($count3) {
-            echo "Employer details added sucessfully";
+            echo "<script>
+                alert('Job Posted Successfully');
+                window.location.href='jobpost.php';
+                </script>";
         } else {
-            echo "Problem adding a Employer details";
+            echo "Problem adding a Job details";
         }
 
     }
