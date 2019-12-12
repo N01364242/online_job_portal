@@ -105,6 +105,13 @@
    
    ![](img/admin_viewEmployer.PNG)
    
+   
+   #####Job Seeker Pages
+   
+   * Job Seeker Login Page
+  
+  ![](img/jobseeker_login.PNG)
+   
 
   ####<h4> Database Design
   
