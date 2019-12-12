@@ -103,6 +103,8 @@
   The database that is used to design the web application is MySQL. We have used MySQL to store
 employer details, jobseeker details, applied jobs by the applicants, jobs posted by the employer, contact us table for any person.
 Hence, we have identified below tables to achieve desired functionality.
+
+![](img/database.PNG) 
     
     1. login: Include the details to login the page
     2. user_details: Includes user who registered to the page
@@ -117,6 +119,10 @@ Hence, we have identified below tables to achieve desired functionality.
     11. skill_level: static table that contain the skill level.
     
     
+
+    
+    
+    
   
-  
+     
   
