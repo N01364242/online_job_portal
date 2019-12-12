@@ -106,11 +106,35 @@
    ![](img/admin_viewEmployer.PNG)
    
    
+   
    #####Job Seeker Pages
    
    * Job Seeker Login Page
   
   ![](img/jobseeker_login.PNG)
+  
+  * Job Seeker Signup Page
+  
+  ![](img/jobseeker_signup.PNG)
+  
+  * Job Seeker - List of available jobs
+  
+  ![](img/jobseeker_list_of_jobs.PNG)
+  
+  * Job Seeker - Job Description
+  
+  ![](img/jobdescription.PNG)
+  
+  * Job Seeker - Apply Job
+  
+  ![](img/jobseeker_jobapplication.PNG)
+  
+  * Job Seeker Profile
+  
+  ![](img/jobseeker_profile.PNG)
+  
+   
+   
    
 
   ####<h4> Database Design
