@@ -115,7 +115,7 @@ if ( isset($_POST['update'] ) ) {
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h1 class="modal-title">Apply Now</h1>
+                <h1 class="modal-title">Add Company</h1>
                 <button type="button" class="close" data-dismiss="modal">×</button>
             </div>
 
