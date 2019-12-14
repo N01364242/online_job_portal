@@ -134,7 +134,47 @@
   ![](img/jobseeker_profile.PNG)
   
    
+   #####Employer Pages
    
+   * Employer Home Page
+  
+  ![](img/employer_home_page.PNG)
+   
+   * Employer Login Page
+  
+  ![](img/employer_login.PNG)
+  
+  * Employer Signup Page
+  
+  ![](img/employer_Signup.PNG)
+  
+  * Employer Profile Page
+  
+  ![](img/yer_Profile.PNG)
+  
+  * Employer Company Detail Form
+  
+  ![](img/employer_company_form.PNG)
+  
+   * Employer Company Detail Page
+  
+  ![](img/Employer_company_detail.PNG)
+  
+  * Employer Job Post Form
+  
+  ![](img/employer_post_job_form.PNG)
+  
+  * Employer Posted Job List
+  
+  ![](img/Employer_joblist.PNG)
+  
+  * Employer Edit Job Page
+  
+  ![](img/employer_editjob.PNG)
+  
+  * Employer View Employees Page
+  
+  ![](img/Employer_view_employees.PNG)
    
 
   ####<h4> Database Design
