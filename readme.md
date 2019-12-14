@@ -150,7 +150,7 @@
   
   * Employer Profile Page
   
-  ![](img/yer_Profile.PNG)
+  ![](img/Employer_profile.PNG)
   
   * Employer Company Detail Form
   
